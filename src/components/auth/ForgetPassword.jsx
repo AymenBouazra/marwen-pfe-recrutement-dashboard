@@ -46,6 +46,10 @@ const ForgetPassword = () => {
                     <div className="col-md-8 col-lg-6 col-xxl-3">
                         <div className="card mb-0">
                             <div className="card-body">
+                                <div className="text-nowrap logo-img text-center d-block py-3 w-100">
+                                    <img src="img/logo/dark-logo.svg" width="180" alt="" />
+                                </div>
+                                <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
                                         <h1 htmlFor="email" className="form-label text-center w-100 mb-3">Enter your e-mail adress here </h1>

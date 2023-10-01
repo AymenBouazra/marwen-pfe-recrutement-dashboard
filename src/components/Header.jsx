@@ -42,7 +42,7 @@ const Header = ({ showSidebarFN }) => {
                                         <i className="ti ti-list-check fs-6"></i>
                                         <p className="mb-0 fs-3">My Task</p>
                                     </div>
-                                    <Link to="/login" className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</Link>
+                                    <div className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</div>
                                 </div>
                             </div>
                         </li>

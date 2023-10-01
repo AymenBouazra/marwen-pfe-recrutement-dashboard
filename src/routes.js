@@ -7,56 +7,65 @@ const Buttons = lazy(() => import('./components/pages/Buttons'))
 const Typography = lazy(() => import('./components/pages/Typography'))
 const Alerts = lazy(() => import('./components/pages/Alerts'))
 const Card = lazy(() => import('./components/pages/Card'))
+
 const routes = [
     {
         path: '/',
         element: Dashboard,
         name: 'Dashboard',
-        exact: true
-    },
-    {
-        path: '/tabler-icons',
-        element: TablerIcons,
-        name: 'TablerIcons',
-        exact: true
+        exact: true,
+        icon: 'layout-dashboard'
     },
 
-    {
-        path: '/sample-page',
-        element: SamplePage,
-        name: 'SamplePage',
-        exact: true
-    },
 
     {
         path: '/forms',
         element: Forms,
         name: 'Forms',
-        exact: true
+        exact: true,
+        icon: 'file-description'
     },
     {
         path: '/alerts',
         element: Alerts,
         name: 'Alerts',
-        exact: true
+        exact: true,
+        icon: 'alert-circle'
     },
     {
         path: '/typography',
         element: Typography,
         name: 'Typography',
-        exact: true
+        exact: true,
+        icon: 'typography'
     },
     {
         path: '/buttons',
         element: Buttons,
         name: 'Buttons',
-        exact: true
+        exact: true,
+        icon: 'article'
     },
     {
         path: '/card',
         element: Card,
         name: 'Card',
-        exact: true
+        exact: true,
+        icon: 'cards'
+    },
+    {
+        path: '/tabler-icons',
+        element: TablerIcons,
+        name: 'Tabler Icons',
+        exact: true,
+        icon: 'mood-happy'
+    },
+    {
+        path: '/sample-page',
+        element: SamplePage,
+        name: 'Sample Page',
+        exact: true,
+        icon: 'aperture'
     },
 
 ]

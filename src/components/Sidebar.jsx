@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
+import routes from '../routes';
 
 const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     const location = useLocation();
@@ -27,79 +28,19 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                         <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span className="hide-menu">Home</span>
                     </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/')}`} to="/" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-layout-dashboard"></i>
-                            </span>
-                            <span className="hide-menu">Dashboard</span>
-                        </Link>
-                    </li>
-                    <li className="nav-small-cap">
-                        <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span className="hide-menu">UI COMPONENTS</span>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/buttons')}`} to="/buttons" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-article"></i>
-                            </span>
-                            <span className="hide-menu">Buttons</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/alerts')}`} to="/alerts" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-alert-circle"></i>
-                            </span>
-                            <span className="hide-menu">Alerts</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/card')}`} to="/card" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-cards"></i>
-                            </span>
-                            <span className="hide-menu">Card</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/forms')}`} to="/forms" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-file-description"></i>
-                            </span>
-                            <span className="hide-menu">Forms</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/typography')}`} to="/typography" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-typography"></i>
-                            </span>
-                            <span className="hide-menu">Typography</span>
-                        </Link>
-                    </li>
 
-                    <li className="nav-small-cap">
-                        <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span className="hide-menu">EXTRA</span>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/tabler-icons')}`} to="/tabler-icons" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-mood-happy"></i>
-                            </span>
-                            <span className="hide-menu">Icons</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className={`sidebar-link ${isLinkActive('/sample-page')}`} to="/sample-page" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-aperture"></i>
-                            </span>
-                            <span className="hide-menu">Sample Page</span>
-                        </Link>
-                    </li>
+                    {routes.map((nav, index) => {
+                        return (
+                            <li className='sidebar-item' key={index}>
+                                <Link className={`sidebar-link ${isLinkActive(nav.path)}`} to={nav.path} aria-expanded="false">
+                                    <span>
+                                        <i className={"ti ti-" + nav.icon}></i>
+                                    </span>
+                                    <span className="hide-menu">{nav.name}</span>
+                                </Link>
+                            </li>
+                        )
+                    })}
                     <li className="nav-small-cap">
                         <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span className="hide-menu">AUTH</span>

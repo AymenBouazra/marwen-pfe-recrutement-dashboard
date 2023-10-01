@@ -19862,7 +19862,8 @@ fieldset:disabled .btn {
 
 .sidebar-nav ul .sidebar-item .first-level .sidebar-item .sidebar-link.active {
     background-color: transparent !important;
-    color: #5D87FF !important
+    color: #5D87FF !important;
+    transition: 0.3s all ease-in-out !important;
 }
 
 .sidebar-nav ul .sidebar-item .two-level .sidebar-item .sidebar-link {
@@ -19877,7 +19878,8 @@ fieldset:disabled .btn {
 .sidebar-nav ul .sidebar-item.selected>.sidebar-link.active,
 .sidebar-nav ul .sidebar-item>.sidebar-link.active {
     background-color: #5D87FF;
-    color: #fff
+    color: #fff;
+    transition: 0.3s all ease-in-out;
 }
 
 .sidebar-nav .sidebar-list .sidebar-list-item {

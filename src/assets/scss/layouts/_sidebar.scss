@@ -104,6 +104,7 @@
       >.sidebar-link.active {
         background-color: $primary;
         color: $white;
+        transition: 0.5s all ease-in-out;
       }
 
     }
