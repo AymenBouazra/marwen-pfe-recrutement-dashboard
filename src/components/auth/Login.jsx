@@ -89,7 +89,7 @@ const Login = () => {
                                         <div className="form-check">
                                             <input className="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked={rememberDevice} onChange={() => setRememberDevice(!rememberDevice)} />
                                             <label className="form-check-label text-dark" htmlFor="flexCheckChecked">
-                                                Remeber this Device
+                                                Remeber me
                                             </label>
                                         </div>
                                         <Link className="text-primary fw-bold" to="/forget-password">Forgot Password ?</Link>

@@ -1,6 +1,5 @@
 import React from 'react'
 import { Navigate } from 'react-router-dom'
-
 import { toast } from 'react-toastify';
 import { getCookie, deleteCookie, isExpiredToken } from '../utils/functions';
 
@@ -17,7 +16,6 @@ const PrivateRoute = ({ children }) => {
         }
     } else {
         deleteCookie("token")
-        toast.error('Your session has expired try relogin!')
         return <Navigate to='/login' />
     }
 }

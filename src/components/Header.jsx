@@ -1,7 +1,16 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-
+import { useNavigate } from 'react-router-dom'
+import { deleteCookie } from '../utils/functions'
+import axios from 'axios'
+import { toast } from 'react-toastify'
 const Header = ({ showSidebarFN }) => {
+    const navigate = useNavigate()
+    const logout = async () => {
+        const response = await axios.get(process.env.REACT_APP_BASE_URL + 'auth/logout')
+        toast.success(response.data.message)
+        navigate('/login')
+        deleteCookie('token')
+    }
     return (
         <header className="app-header">
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -42,7 +51,7 @@ const Header = ({ showSidebarFN }) => {
                                         <i className="ti ti-list-check fs-6"></i>
                                         <p className="mb-0 fs-3">My Task</p>
                                     </div>
-                                    <div className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</div>
+                                    <div onClick={logout} className="btn btn-outline-primary mx-3 mt-2 d-block">Logout</div>
                                 </div>
                             </div>
                         </li>
