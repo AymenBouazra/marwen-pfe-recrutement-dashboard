@@ -79,26 +79,7 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                             <span className="hide-menu">Typography</span>
                         </Link>
                     </li>
-                    <li className="nav-small-cap">
-                        <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
-                        <span className="hide-menu">AUTH</span>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className='sidebar-link' to="/login" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-login"></i>
-                            </span>
-                            <span className="hide-menu">Login</span>
-                        </Link>
-                    </li>
-                    <li className='sidebar-item'>
-                        <Link className='sidebar-link' to="/register" aria-expanded="false">
-                            <span>
-                                <i className="ti ti-user-plus"></i>
-                            </span>
-                            <span className="hide-menu">Register</span>
-                        </Link>
-                    </li>
+
                     <li className="nav-small-cap">
                         <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span className="hide-menu">EXTRA</span>
@@ -117,6 +98,26 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                                 <i className="ti ti-aperture"></i>
                             </span>
                             <span className="hide-menu">Sample Page</span>
+                        </Link>
+                    </li>
+                    <li className="nav-small-cap">
+                        <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span className="hide-menu">AUTH</span>
+                    </li>
+                    <li className='sidebar-item'>
+                        <Link className='sidebar-link' to="/login" aria-expanded="false">
+                            <span>
+                                <i className="ti ti-login"></i>
+                            </span>
+                            <span className="hide-menu">Login</span>
+                        </Link>
+                    </li>
+                    <li className='sidebar-item'>
+                        <Link className='sidebar-link' to="/register" aria-expanded="false">
+                            <span>
+                                <i className="ti ti-user-plus"></i>
+                            </span>
+                            <span className="hide-menu">Register</span>
                         </Link>
                     </li>
                 </ul>

@@ -6,7 +6,6 @@ const Layout = () => {
     const [isMiniSidebar, setIsMiniSidebar] = useState(window.innerWidth < 1200);
 
     const showSidebarFN = () => {
-        console.log('clicked');
         setIsMiniSidebar(!isMiniSidebar)
     }
     useEffect(() => {
