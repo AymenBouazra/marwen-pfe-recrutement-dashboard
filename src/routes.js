@@ -7,6 +7,7 @@ const Buttons = lazy(() => import('./components/pages/Buttons'))
 const Typography = lazy(() => import('./components/pages/Typography'))
 const Alerts = lazy(() => import('./components/pages/Alerts'))
 const Card = lazy(() => import('./components/pages/Card'))
+const Candidats = lazy(() => import('./components/pages/Candidats'))
 
 const routes = [
     {
@@ -16,8 +17,13 @@ const routes = [
         exact: true,
         icon: 'layout-dashboard'
     },
-
-
+    {
+        path: '/candidats',
+        element: Candidats,
+        name: 'Candidats',
+        exact: true,
+        icon: 'file-description'
+    },
     {
         path: '/forms',
         element: Forms,

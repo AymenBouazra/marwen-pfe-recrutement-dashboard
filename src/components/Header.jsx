@@ -22,12 +22,12 @@ const Header = ({ showSidebarFN }) => {
                             <i className="ti ti-menu-2"></i>
                         </div>
                     </li>
-                    <li className="nav-item">
+                    {/* <li className="nav-item">
                         <div className="nav-link nav-icon-hover">
                             <i className="ti ti-bell-ringing"></i>
                             <div className="notification bg-primary rounded-circle"></div>
                         </div>
-                    </li>
+                    </li> */}
                 </ul>
                 <div className="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">

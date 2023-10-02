@@ -1,0 +1,122 @@
+[
+    {
+        "nom": "John Doe",
+        "prenom": "John",
+        "email": "john@example.com",
+        "phone": "123-456-7890",
+        "competence": "johndoe.com",
+        "experience": "5 years in software development",
+        "diplome": "Bachelor's in Computer Science",
+        "education": "University of Example",
+        "adresse": "123 Main St, Exampleville",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Jane Smith",
+        "prenom": "Jane",
+        "email": "jane@example.com",
+        "phone": "555-123-4567",
+        "competence": "janesmith.com",
+        "experience": "10 years in marketing",
+        "diplome": "Master's in Business Administration",
+        "education": "Example Business School",
+        "adresse": "456 Elm St, Townsville",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Robert Johnson",
+        "prenom": "Robert",
+        "email": "robert@example.com",
+        "phone": "888-555-1212",
+        "competence": "robertjohnson.com",
+        "experience": "3 years in graphic design",
+        "diplome": "Associate's in Design",
+        "education": "Art Institute of Design",
+        "adresse": "789 Oak Ave, Creativity City",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Emily Davis",
+        "prenom": "Emily",
+        "email": "emily@example.com",
+        "phone": "555-987-6543",
+        "competence": "emilydavis.com",
+        "experience": "8 years in project management",
+        "diplome": "Bachelor's in Business Administration",
+        "education": "Business University",
+        "adresse": "987 Oak St, Management Town",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Michael Johnson",
+        "prenom": "Michael",
+        "email": "michael@example.com",
+        "phone": "777-123-4567",
+        "competence": "michaeljohnson.com",
+        "experience": "15 years in finance",
+        "diplome": "Master's in Finance",
+        "education": "Finance Institute",
+        "adresse": "555 Pine Rd, Finance City",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Sarah Williams",
+        "prenom": "Sarah",
+        "email": "sarah@example.com",
+        "phone": "333-555-7777",
+        "competence": "sarahwilliams.com",
+        "experience": "6 years in healthcare",
+        "diplome": "Doctor of Medicine",
+        "education": "Medical College",
+        "adresse": "123 Cedar Ave, Healthtown",
+        "role": "Candidat"
+    },
+    {
+        "nom": "David Lee",
+        "prenom": "David",
+        "email": "david@example.com",
+        "phone": "111-222-3333",
+        "competence": "davidlee.com",
+        "experience": "12 years in engineering",
+        "diplome": "Bachelor's in Engineering",
+        "education": "Engineering University",
+        "adresse": "222 Maple St, Engineer City",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Linda Brown",
+        "prenom": "Linda",
+        "email": "linda@example.com",
+        "phone": "444-666-8888",
+        "competence": "lindabrown.com",
+        "experience": "7 years in human resources",
+        "diplome": "Master's in HR Management",
+        "education": "HR Institute",
+        "adresse": "888 Walnut Rd, HR Town",
+        "role": "Candidat"
+    },
+    {
+        "nom": "James Wilson",
+        "prenom": "James",
+        "email": "james@example.com",
+        "phone": "999-888-7777",
+        "competence": "jameswilson.com",
+        "experience": "9 years in sales",
+        "diplome": "Bachelor's in Marketing",
+        "education": "Marketing School",
+        "adresse": "333 Birch St, Salesville",
+        "role": "Candidat"
+    },
+    {
+        "nom": "Amanda Martinez",
+        "prenom": "Amanda",
+        "email": "amanda@example.com",
+        "phone": "777-999-1111",
+        "competence": "amandamartinez.com",
+        "experience": "4 years in teaching",
+        "diplome": "Master's in Education",
+        "education": "Teaching College",
+        "adresse": "666 Oak Ln, Education City",
+        "role": "Candidat"
+    }
+]

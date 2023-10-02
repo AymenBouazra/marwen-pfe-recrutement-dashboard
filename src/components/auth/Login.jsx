@@ -112,6 +112,9 @@ const Login = () => {
                     </div>
                 </div>
             </div>
+            <div className='d-none'>
+                {JSON.stringify(cookies)}
+            </div>
         </div>
     )
 }
