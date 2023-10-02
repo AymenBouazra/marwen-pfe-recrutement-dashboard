@@ -1,0 +1,45 @@
+[
+    {
+        "nom": "John Doe",
+        "prenom": "John",
+        "email": "aymenbouazra994@gmail.com",
+        "phone": "123-456-7890",
+        "competence": "johndoe.com",
+        "experience": "5 years in software development",
+        "diplome": "Bachelor's in Computer Science",
+        "education": "University of Example",
+        "adresse": "123 Main St, Exampleville",
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
+    },
+    {
+        "nom": "Jane Smith",
+        "prenom": "Jane",
+        "email": "aymenbouazra994@gmail.com",
+        "phone": "555-123-4567",
+        "competence": "janesmith.com",
+        "experience": "10 years in marketing",
+        "diplome": "Master's in Business Administration",
+        "education": "Example Business School",
+        "adresse": "456 Elm St, Townsville",
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
+    },
+    {
+        "nom": "Robert Johnson",
+        "prenom": "Robert",
+        "email": "aymenbouazra994@gmail.com",
+        "phone": "888-555-1212",
+        "competence": "robertjohnson.com",
+        "experience": "3 years in graphic design",
+        "diplome": "Associate's in Design",
+        "education": "Art Institute of Design",
+        "adresse": "789 Oak Ave, Creativity City",
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
+    }
+    
+]

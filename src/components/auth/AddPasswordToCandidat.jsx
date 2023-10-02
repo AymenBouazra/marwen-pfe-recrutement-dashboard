@@ -1,10 +1,10 @@
 import React, { useState } from 'react'
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { Link, useLocation, useNavigate } from 'react-router-dom'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { toast } from 'react-toastify';
 
-const AccountConfirmation = () => {
+const AddPasswordToCandidat = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate()
     const location = useLocation()
@@ -12,35 +12,37 @@ const AccountConfirmation = () => {
     const email = searchParams.get('email');
     const validate = values => {
         const errors = {};
-        if (!values.code) {
-            errors.code = 'Code is required';
-        } else if (values.code.length !== 6) {
-            errors.code = 'Code must be 6 caracters';
+        if (!values.password) {
+            errors.password = 'Password is required';
+        } else if (values.password.length < 6) {
+            errors.password = 'Must be 6 characters or more';
+        }
+        if (!values.confirmPassword) {
+            errors.confirmPassword = 'Password confirmation is required';
+        } else if (values.confirmPassword.length < 6) {
+            errors.confirmPassword = 'Must be 6 characters or more';
+        } else if (values.password !== values.confirmPassword) {
+            errors.confirmPassword = 'The password and password confirmation must be identical!';
         }
         return errors;
     };
     const formik = useFormik({
         initialValues: {
-            code: '',
+            password: '',
+            confirmPassword: ''
         },
         validate,
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const data = {
-                    confirmationCode: values.code,
-                    email
-                }
-                const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/account-confirmation', data)
-
-                if (response.status === 200) {
-                    toast.success(response.data.message)
-                    navigate('/login')
-                }
+                const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/new-password/' + email, { password: values.password })
+                toast.success(response.data.message)
+                navigate('/login')
                 setLoading(false)
             } catch (error) {
                 if (error.response.status === 400) {
                     toast.error(error.response.data.message)
+                    navigate('/forget-password')
                 } else if (error.response.status === 500) {
                     toast.error(error.response.data.message)
                 }
@@ -49,23 +51,6 @@ const AccountConfirmation = () => {
         },
     });
 
-    const resendCode = async () => {
-        try {
-            const data = {
-                email
-            }
-            const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/resend-code', data)
-            if (response.status === 200) {
-                toast.success(response.data.message)
-            }
-        } catch (error) {
-            if (error.response.status === 400) {
-                toast.error(error.response.data.message)
-            } else if (error.response.status === 500) {
-                toast.error(error.response.data.message)
-            }
-        }
-    }
     return (
         <div
             className="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
@@ -80,24 +65,31 @@ const AccountConfirmation = () => {
                                 <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
-                                        <label htmlFor="code" className="form-label text-center w-100">Confirmation code</label>
-                                        <input type="code" className={"form-control"} id="code"
-                                            name="code"
+                                        <label htmlFor="password" className="form-label">New password</label>
+                                        <input type="password" className={"form-control " + (!formik.touched.password ? '' : formik.touched.password && formik.errors.password ? 'is-invalid' : 'is-valid')} id="password"
+                                            name="password"
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
-                                            value={formik.values.code} />
-                                        {formik.touched.code && formik.errors.code && (
-                                            <div className='pt-2 text-danger'>{formik.errors.code}</div>)}
+                                            value={formik.values.password} />
+                                        {formik.touched.password && formik.errors.password && (
+                                            <div className='pt-2 text-danger'>{formik.errors.password}</div>)}
                                     </div>
-                                    <button type='submit' className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{loading ?
+                                    <div className="mb-4">
+                                        <label htmlFor="confirmPassword" className="form-label">Confirm password</label>
+                                        <input type="password" className={"form-control " + (!formik.touched.confirmPassword ? '' : formik.touched.confirmPassword && formik.errors.confirmPassword ? 'is-invalid' : 'is-valid')} id="confirmPassword"
+                                            name="confirmPassword"
+                                            onChange={formik.handleChange}
+                                            onBlur={formik.handleBlur}
+                                            value={formik.values.confirmPassword} />
+                                        {formik.touched.confirmPassword && formik.errors.confirmPassword && (
+                                            <div className='pt-2 text-danger'>{formik.errors.confirmPassword}</div>)}
+                                    </div>
+                                    <button type='submit' disabled={loading} className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{loading ?
                                         <div>
                                             <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
                                             <span> Verifying...</span>
                                         </div>
-                                        : 'Submit code'}</button>
-                                    <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">Didn't receive the confirmation code? <strong className='text-primary cursor-pointer' onClick={resendCode} > {loading ? 'Sending...' : 'Resend'}</strong> </p>
-                                    </div>
+                                        : 'Search'}</button>
 
                                     <div className="d-flex align-items-center justify-content-center">
                                         <p className="fs-4 mb-0 fw-bold">Return to</p>
@@ -113,4 +105,4 @@ const AccountConfirmation = () => {
     )
 }
 
-export default AccountConfirmation
+export default AddPasswordToCandidat

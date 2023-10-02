@@ -28,7 +28,6 @@ const ForgetPassword = () => {
                 setLoading(false)
             } catch (error) {
                 if (error.response.status === 400) {
-                    console.log(error.response);
                     toast.error(error.response.data.message)
                 } else if (error.response.status === 500) {
                     toast.error(error.response.data.message)
@@ -69,8 +68,15 @@ const ForgetPassword = () => {
                                         : 'Search'}</button>
 
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">Return to</p>
+                                    <p className="fs-4 mb-0 fw-bold">Return to</p>
                                         <Link className="text-primary fw-bold ms-2" to="/login">Sign In</Link>
+                                        
+                                    </div>
+                                    <div className="d-flex align-items-center justify-content-center">
+                                    <p className="fs-4 mb-0 fw-bold">Or</p>
+                                    </div>
+                                    <div className="d-flex align-items-center justify-content-center">
+                                        <Link className="text-primary fw-bold ms-2" to="/register">Create account</Link>
                                     </div>
                                 </form>
                             </div>

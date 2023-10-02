@@ -36,15 +36,23 @@ const Login = () => {
             try {
                 setLoading(true)
                 const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values)
-                setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
+                
+                if (response.status === 200) {
+                    setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
                 toast.success(response.data.message)
                 navigate('/')
+                }
                 setLoading(false)
             } catch (error) {
-                if (error.response.status === 400) {
+                if (error.response.status === 400 && error.response.data.message==='Please check your mailbox to verify your account!') {
                     toast.warning(error.response.data.message)
                     navigate('/account-confirmation?email=' + values.email)
-                } else {
+                }else if (error.response.status === 400 && error.response.data.message==='Email or password incorrect') {
+                    toast.warning(error.response.data.message)
+                    
+                } else if (error.response.status === 401) {
+                    navigate('/new-password?email='+values.email)
+                }  else {
                     toast.error(error.response.data.message)
                 }
                 setLoading(false)

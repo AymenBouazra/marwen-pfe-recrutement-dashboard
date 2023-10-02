@@ -63,7 +63,7 @@ const ResetPassword = () => {
                                 <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
-                                        <label htmlFor="password" className="form-label">Password</label>
+                                        <label htmlFor="password" className="form-label">New password</label>
                                         <input type="password" className={"form-control " + (!formik.touched.password ? '' : formik.touched.password && formik.errors.password ? 'is-invalid' : 'is-valid')} id="password"
                                             name="password"
                                             onChange={formik.handleChange}

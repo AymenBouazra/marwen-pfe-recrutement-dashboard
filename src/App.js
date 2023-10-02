@@ -13,6 +13,7 @@ const Login = lazy(() => import('./components/auth/Login'));
 const AccountConfirmation = lazy(() => import('./components/auth/AccountConfirmation'));
 const ForgetPassword = lazy(() => import('./components/auth/ForgetPassword'));
 const ResetPassword = lazy(() => import('./components/auth/ResetPassword'));
+const AddPasswordToCandidat = lazy(() => import('./components/auth/AddPasswordToCandidat'));
 const Register = lazy(() => import('./components/auth/Register'));
 const Loading =
   <div className="d-flex justify-content-center vh-100 align-items-center">
@@ -50,6 +51,10 @@ const router = createBrowserRouter([
   {
     path: "/reset-password/:token",
     element: <ResetPassword />,
+  },
+  {
+    path: "/new-password",
+    element: <AddPasswordToCandidat />,
   },
   {
     path: '/',

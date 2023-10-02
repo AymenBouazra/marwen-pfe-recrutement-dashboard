@@ -11,6 +11,7 @@ const Candidats = () => {
         if (file) {
             if (file.type !== 'application/json') {
                 event.target.value = null
+                setJsonData(null)
                 toast.warning('The selected file is not of type Json!')
             } else {
                 readAndParseJSON(file);
@@ -33,9 +34,18 @@ const Candidats = () => {
     };
 
     const handleSubmit = async () => {
+       try {
         const response = await axios.post(process.env.REACT_APP_BASE_URL + 'candidats/addFromJson', jsonData)
-        toast.success(response.data.message)
-        fetchCandidats()
+        console.log(response);
+        if (response.status === 201 ||response.status === 200) {
+            toast.success(response.data.message)
+            fetchCandidats()
+        }else{
+            toast.warning('An error has been occured')
+        }
+       } catch (error) {
+            toast.warning(error.response.data.message)
+       }
     }
 
     const fetchCandidats = async () => {
@@ -51,11 +61,12 @@ const Candidats = () => {
         <div className="container-fluid">
             <div className="card">
                 <div className='card-header'>
-                    <h5 className="card-title fw-semibold">Candidats</h5>
+                    <h2 className=" fw-semibold">Candidats</h2>
                 </div>
                 <div className="card-body">
                     <h6 className='mb-3'>To upload candidats please select a .Json File below.</h6>
                     <input type="file" onChange={handleFileUpload} className='form-control mb-2' accept="application/JSON" />
+                    {jsonData && <p className='text-warning'>{jsonData.length+' candidats are going to be added'}</p>}
                     <div className='d-flex justify-content-end mb-4'>
                         <button onClick={handleSubmit} className='btn btn-primary ms-auto'>Upload file</button>
                     </div>

@@ -2,14 +2,16 @@
     {
         "nom": "John Doe",
         "prenom": "John",
-        "email": "john@example.com",
+        "email": "aymenbouazra994@gmail.com",
         "phone": "123-456-7890",
         "competence": "johndoe.com",
         "experience": "5 years in software development",
         "diplome": "Bachelor's in Computer Science",
         "education": "University of Example",
         "adresse": "123 Main St, Exampleville",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Jane Smith",
@@ -21,7 +23,9 @@
         "diplome": "Master's in Business Administration",
         "education": "Example Business School",
         "adresse": "456 Elm St, Townsville",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Robert Johnson",
@@ -33,7 +37,9 @@
         "diplome": "Associate's in Design",
         "education": "Art Institute of Design",
         "adresse": "789 Oak Ave, Creativity City",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Emily Davis",
@@ -45,7 +51,9 @@
         "diplome": "Bachelor's in Business Administration",
         "education": "Business University",
         "adresse": "987 Oak St, Management Town",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Michael Johnson",
@@ -57,7 +65,9 @@
         "diplome": "Master's in Finance",
         "education": "Finance Institute",
         "adresse": "555 Pine Rd, Finance City",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Sarah Williams",
@@ -69,7 +79,9 @@
         "diplome": "Doctor of Medicine",
         "education": "Medical College",
         "adresse": "123 Cedar Ave, Healthtown",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "David Lee",
@@ -81,7 +93,9 @@
         "diplome": "Bachelor's in Engineering",
         "education": "Engineering University",
         "adresse": "222 Maple St, Engineer City",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Linda Brown",
@@ -93,7 +107,9 @@
         "diplome": "Master's in HR Management",
         "education": "HR Institute",
         "adresse": "888 Walnut Rd, HR Town",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "James Wilson",
@@ -105,7 +121,9 @@
         "diplome": "Bachelor's in Marketing",
         "education": "Marketing School",
         "adresse": "333 Birch St, Salesville",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     },
     {
         "nom": "Amanda Martinez",
@@ -117,6 +135,8 @@
         "diplome": "Master's in Education",
         "education": "Teaching College",
         "adresse": "666 Oak Ln, Education City",
-        "role": "Candidat"
+        "role": "Candidat",
+        "noPassword":"true",
+        "confirmed":"true"
     }
 ]
