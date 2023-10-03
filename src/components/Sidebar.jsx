@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link, useLocation } from 'react-router-dom'
-import routes from '../routes';
+import { routes } from '../routes';
 
 const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     const location = useLocation();

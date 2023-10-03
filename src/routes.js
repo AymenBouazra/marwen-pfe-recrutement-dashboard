@@ -8,8 +8,9 @@ const Typography = lazy(() => import('./components/pages/Typography'))
 const Alerts = lazy(() => import('./components/pages/Alerts'))
 const Card = lazy(() => import('./components/pages/Card'))
 const Candidats = lazy(() => import('./components/pages/Candidats'))
+const Profile = lazy(() => import('./components/pages/Profile'))
 
-const routes = [
+export const routes = [
     {
         path: '/',
         element: Dashboard,
@@ -73,7 +74,12 @@ const routes = [
         exact: true,
         icon: 'aperture'
     },
+    {
+        path: '/profile',
+        element: Profile,
+        name: 'Profile',
+        exact: true,
+        icon: 'user'
+    }
 
 ]
-
-export default routes

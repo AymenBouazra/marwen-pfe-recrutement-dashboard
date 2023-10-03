@@ -1,9 +1,10 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { deleteCookie } from '../utils/functions'
 import axios from 'axios'
 import { toast } from 'react-toastify'
 const Header = ({ showSidebarFN }) => {
+
     const navigate = useNavigate()
     const logout = async () => {
         const response = await axios.get(process.env.REACT_APP_BASE_URL + 'auth/logout')
@@ -11,6 +12,7 @@ const Header = ({ showSidebarFN }) => {
         navigate('/login')
         deleteCookie('token')
     }
+
     return (
         <header className="app-header">
             <nav className="navbar navbar-expand-lg navbar-light">
@@ -39,14 +41,12 @@ const Header = ({ showSidebarFN }) => {
                             </div>
                             <div className="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
                                 <div className="message-body">
-                                    <div className="d-flex align-items-center gap-2 dropdown-item">
+                                    <Link
+                                        to='/profile'
+                                        className="d-flex align-items-center gap-2 dropdown-item">
                                         <i className="ti ti-user fs-6"></i>
                                         <p className="mb-0 fs-3">My Profile</p>
-                                    </div>
-                                    <div className="d-flex align-items-center gap-2 dropdown-item">
-                                        <i className="ti ti-mail fs-6"></i>
-                                        <p className="mb-0 fs-3">My Account</p>
-                                    </div>
+                                    </Link>
                                     <div className="d-flex align-items-center gap-2 dropdown-item">
                                         <i className="ti ti-list-check fs-6"></i>
                                         <p className="mb-0 fs-3">My Task</p>

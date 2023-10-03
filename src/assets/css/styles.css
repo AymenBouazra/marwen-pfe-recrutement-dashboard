@@ -12092,7 +12092,7 @@ fieldset:disabled .btn {
 
 .text-secondary {
     --bs-text-opacity: 1;
-    color: rgba(var(--bs-secondary-rgb), var(--bs-text-opacity)) !important
+    color: rgba(var(--bs-secondary-text), var(--bs-text-opacity)) !important
 }
 
 .text-success {

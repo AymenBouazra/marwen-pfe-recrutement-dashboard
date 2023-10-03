@@ -5,6 +5,7 @@ import { toast } from 'react-toastify';
 const Candidats = () => {
     const [jsonData, setJsonData] = useState(null);
     const [candidats, setCandidats] = useState([])
+    const [loading, setLoading] = useState(false)
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
@@ -34,24 +35,36 @@ const Candidats = () => {
     };
 
     const handleSubmit = async () => {
-       try {
-        const response = await axios.post(process.env.REACT_APP_BASE_URL + 'candidats/addFromJson', jsonData)
-        console.log(response);
-        if (response.status === 201 ||response.status === 200) {
-            toast.success(response.data.message)
-            fetchCandidats()
-        }else{
-            toast.warning('An error has been occured')
-        }
-       } catch (error) {
+        try {
+            setLoading(true)
+            if (jsonData) {
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'candidats/addFromJson', jsonData)
+                if (response.status === 201 || response.status === 200) {
+                    toast.success(response.data.message)
+                    fetchCandidats()
+                } else {
+                    toast.warning('An error has been occured')
+                }
+            } else {
+                toast.info('Select a file to upload!')
+            }
+            setLoading(false)
+        } catch (error) {
             toast.warning(error.response.data.message)
-       }
+            setLoading(false)
+        }
     }
 
     const fetchCandidats = async () => {
         const response = await axios.get(process.env.REACT_APP_BASE_URL + 'candidats/getCandidats')
         setCandidats(response.data)
 
+    }
+
+    const deleteCandidat = async (id) => {
+        console.log(id);
+        await axios.delete(process.env.REACT_APP_BASE_URL + 'candidats/delete/' + id)
+        fetchCandidats()
     }
     useEffect(() => {
         fetchCandidats()
@@ -65,10 +78,24 @@ const Candidats = () => {
                 </div>
                 <div className="card-body">
                     <h6 className='mb-3'>To upload candidats please select a .Json File below.</h6>
-                    <input type="file" onChange={handleFileUpload} className='form-control mb-2' accept="application/JSON" />
-                    {jsonData && <p className='text-warning'>{jsonData.length+' candidats are going to be added'}</p>}
+                    <input
+                        type="file"
+                        onChange={handleFileUpload}
+                        className='form-control mb-2'
+                        accept="application/JSON"
+                    />
+                    {jsonData && <p className='text-warning'>
+                        {jsonData.length + ' candidats are going to be added'}
+                    </p>
+                    }
                     <div className='d-flex justify-content-end mb-4'>
-                        <button onClick={handleSubmit} className='btn btn-primary ms-auto'>Upload file</button>
+                        <button
+                            onClick={handleSubmit}
+                            className='btn btn-primary ms-auto'
+                            disabled={loading}
+                        >
+                            {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Uploading...</> : <><i className="ti ti-upload"></i> Upload file</>}
+                        </button>
                     </div>
                     <div className="card w-100">
                         <div className="card-body p-4">
@@ -97,7 +124,7 @@ const Candidats = () => {
                                     <tbody>
                                         {candidats.length === 0 ?
                                             <tr>
-                                                <td colSpan={5}><h1 className='text-center'>No candidats yet received</h1></td>
+                                                <td colSpan={5}><h4 className='text-center text-muted'>No candidats yet received</h4></td>
                                             </tr> :
                                             candidats?.map((data, index) => {
                                                 return (
@@ -115,7 +142,7 @@ const Candidats = () => {
                                                             </div>
                                                         </td>
                                                         <td className="border-bottom-0">
-                                                            <button className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
+                                                            <button onClick={() => deleteCandidat(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
                                                             <button className='btn btn-success'><i className='ti ti-edit'></i></button>
                                                         </td>
                                                     </tr>

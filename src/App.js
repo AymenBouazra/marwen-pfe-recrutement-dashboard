@@ -5,9 +5,11 @@ import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'react-toastify/dist/ReactToastify.min.css'
 import { Suspense, lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import routes from './routes'
+import { routes } from './routes'
 import { ToastContainer } from 'react-toastify';
 import PrivateRoute from './private-route/PrivateRoute';
+import { CoockieContext } from './features/contexts';
+import { decodeToken, getCookie } from './utils/functions';
 const Layout = lazy(() => import('./components/Layout'));
 const Login = lazy(() => import('./components/auth/Login'));
 const AccountConfirmation = lazy(() => import('./components/auth/AccountConfirmation'));
@@ -63,7 +65,11 @@ const router = createBrowserRouter([
   }
 
 ]);
+
+
 function App() {
+  const token = decodeToken(getCookie('token'))
+
   return (
     <div>
       <ToastContainer
@@ -78,9 +84,12 @@ function App() {
         pauseOnHover
         theme="light"
       />
-      <Suspense fallback={Loading}>
-        <RouterProvider router={router} fallbackElement={Loading} />
-      </Suspense>
+      <CoockieContext.Provider value={token}>
+        <Suspense fallback={Loading}>
+          <RouterProvider router={router} fallbackElement={Loading} />
+        </Suspense>
+      </CoockieContext.Provider>
+
     </div>
   );
 }

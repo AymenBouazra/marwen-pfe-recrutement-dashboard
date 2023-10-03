@@ -18,3 +18,7 @@ export const isExpiredToken = (token) => {
     const decoded = jwt_decode(token);
     return Math.floor(new Date().getTime() / 1000) >= decoded.exp
 }
+
+export const decodeToken = (token) => {
+    return jwt_decode(token);
+}
