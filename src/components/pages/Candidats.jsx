@@ -1,11 +1,11 @@
-import axios from 'axios';
 import React, { useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
-
+import CandidatsService from '../../services/candidat'
 const Candidats = () => {
     const [jsonData, setJsonData] = useState(null);
     const [candidats, setCandidats] = useState([])
     const [loading, setLoading] = useState(false)
+    const [notification, setNotification] = useState('')
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
@@ -38,9 +38,14 @@ const Candidats = () => {
         try {
             setLoading(true)
             if (jsonData) {
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'candidats/addFromJson', jsonData)
+                const response = await CandidatsService.createOne(jsonData)
                 if (response.status === 201 || response.status === 200) {
                     toast.success(response.data.message)
+                    setNotification(response.data.message)
+                    setJsonData(null)
+                    setTimeout(() => {
+                        setNotification('')
+                    }, 5000)
                     fetchCandidats()
                 } else {
                     toast.warning('An error has been occured')
@@ -56,14 +61,13 @@ const Candidats = () => {
     }
 
     const fetchCandidats = async () => {
-        const response = await axios.get(process.env.REACT_APP_BASE_URL + 'candidats/getCandidats')
+        const response = await CandidatsService.getAllCandidats()
         setCandidats(response.data)
 
     }
 
     const deleteCandidat = async (id) => {
-        console.log(id);
-        await axios.delete(process.env.REACT_APP_BASE_URL + 'candidats/delete/' + id)
+        await CandidatsService.removeOne(id)
         fetchCandidats()
     }
     useEffect(() => {
@@ -74,7 +78,7 @@ const Candidats = () => {
         <div className="container-fluid">
             <div className="card">
                 <div className='card-header'>
-                    <h2 className=" fw-semibold">Candidats</h2>
+                    <h2 className="fw-semibold">Candidats</h2>
                 </div>
                 <div className="card-body">
                     <h6 className='mb-3'>To upload candidats please select a .Json File below.</h6>
@@ -84,11 +88,19 @@ const Candidats = () => {
                         className='form-control mb-2'
                         accept="application/JSON"
                     />
-                    {jsonData && <p className='text-warning'>
-                        {jsonData.length + ' candidats are going to be added'}
-                    </p>
-                    }
+
                     <div className='d-flex justify-content-end mb-4'>
+                        {jsonData && <p className='text-warning'>
+                            {jsonData.length + ' candidats'}
+                        </p>
+                        }
+                        {notification && (
+                            <div className='animate slideIn'>
+                                <div className="alert candidats alert-success m-0" role="alert">
+                                    {notification}
+                                </div>
+                            </div>
+                        )}
                         <button
                             onClick={handleSubmit}
                             className='btn btn-primary ms-auto'
