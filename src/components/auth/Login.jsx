@@ -35,7 +35,12 @@ const Login = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values)
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values, {
+                    withCredentials: true,
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                })
 
                 if (response.status === 200) {
                     setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
