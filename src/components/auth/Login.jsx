@@ -35,33 +35,29 @@ const Login = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
+                let myHeaders = new Headers();
+                myHeaders.append("Content-Type", "application/json");
+                myHeaders.append('Access-Control-Allow-Origin', 'https://recrute-pfe-recrutement-backend.vercel.app');
                 const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values, {
                     withCredentials: true,
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
+                    headers: myHeaders,
                 })
-
                 if (response.status === 200) {
                     setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
-
                     window.location.href = '/'
                 }
                 setLoading(false)
             } catch (error) {
+                setLoading(false)
                 if (error.response.status === 400 && error.response.data.message === 'Please check your mailbox to verify your account!') {
                     toast.warning(error.response.data.message)
                     navigate('/account-confirmation?email=' + values.email)
-                    setLoading(false)
                 } else if (error.response.status === 400 && error.response.data.message === 'Email or password incorrect') {
                     toast.warning(error.response.data.message)
-                    setLoading(false)
                 } else if (error.response.status === 401) {
                     navigate('/new-password?email=' + values.email)
-                    setLoading(false)
                 } else {
                     toast.error(error.response.data.message)
-                    setLoading(false)
                 }
             }
         },
