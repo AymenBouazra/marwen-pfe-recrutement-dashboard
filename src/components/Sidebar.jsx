@@ -38,7 +38,7 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                     {routes.map((nav, index) => {
                         return (
                             !paths.includes(nav.name) && <li className='sidebar-item' key={index}>
-                                <Link className={`sidebar-link ${isLinkActive(nav.path)}`} onClick={showSidebarFN} to={nav.path} aria-expanded="false">
+                                <Link className={`sidebar-link ${isLinkActive(nav.path)}`} to={nav.path} aria-expanded="false">
                                     <span>
                                         <i className={"ti ti-" + nav.icon}></i>
                                     </span>
