@@ -114,12 +114,5 @@ export const routes = [
         exact: true,
         icon: 'question-mark'
     },
-    {
-        path: '/evaluateur',
-        element: Evaluateur,
-        name: 'Evaluateur',
-        exact: true,
-        icon: 'list-search'
-    },
 
 ]

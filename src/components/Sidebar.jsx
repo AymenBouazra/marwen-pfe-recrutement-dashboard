@@ -17,7 +17,7 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     return (
         <aside className='left-sidebar'>
             <div className="brand-logo d-flex align-items-center justify-content-between">
-                <Link to="/" onClick={showSidebarFN} className="text-center logo-img w-100">
+                <Link to="/" className="text-center logo-img w-100">
                     <img src="img/logo/logo-color-1.svg" width="120" alt="" />
                 </Link>
                 <div
