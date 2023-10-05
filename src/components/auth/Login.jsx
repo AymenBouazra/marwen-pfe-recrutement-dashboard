@@ -35,13 +35,8 @@ const Login = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                let myHeaders = new Headers();
-                myHeaders.append("Content-Type", "application/json");
-                myHeaders.append('Access-Control-Allow-Origin', 'https://recrute-pfe-recrutement-backend.vercel.app');
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + '/api/auth/login', values, {
-                    withCredentials: true,
-                    headers: myHeaders,
-                })
+
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + '/api/auth/login', values)
                 if (response.status === 200) {
                     setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
                     window.location.href = '/'
