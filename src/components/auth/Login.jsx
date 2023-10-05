@@ -48,6 +48,7 @@ const Login = () => {
                 }
                 setLoading(false)
             } catch (error) {
+                console.log(error);
                 setLoading(false)
                 if (error.response.status === 400 && error.response.data.message === 'Please check your mailbox to verify your account!') {
                     toast.warning(error.response.data.message)
