@@ -23,7 +23,7 @@ const ForgetPassword = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/forget-password', values)
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + '/api/auth/forget-password', values)
                 toast.success(response.data.message)
                 setLoading(false)
             } catch (error) {

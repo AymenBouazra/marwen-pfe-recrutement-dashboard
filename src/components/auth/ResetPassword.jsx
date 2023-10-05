@@ -33,7 +33,7 @@ const ResetPassword = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/reset-password/' + token, { password: values.password })
+                const response = await axios.put(process.env.REACT_APP_BASE_URL + '/api/auth/reset-password/' + token, { password: values.password })
                 toast.success(response.data.message)
                 navigate('/login')
                 setLoading(false)

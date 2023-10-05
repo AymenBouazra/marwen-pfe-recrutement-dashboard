@@ -45,7 +45,7 @@ const Register = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/register', values)
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + '/api/auth/register', values)
                 toast.success(response.data.message)
                 navigate('/login')
                 setLoading(false)

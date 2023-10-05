@@ -35,7 +35,7 @@ const AddPasswordToCandidat = () => {
         onSubmit: async values => {
             try {
                 setLoading(true)
-                const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/new-password/' + email, { password: values.password })
+                const response = await axios.put(process.env.REACT_APP_BASE_URL + '/api/auth/new-password/' + email, { password: values.password })
                 toast.success(response.data.message)
                 navigate('/login')
                 setLoading(false)

@@ -54,7 +54,7 @@ const AccountConfirmation = () => {
             const data = {
                 email
             }
-            const response = await axios.put(process.env.REACT_APP_BASE_URL + 'auth/resend-code', data)
+            const response = await axios.put(process.env.REACT_APP_BASE_URL + '/api/auth/resend-code', data)
             if (response.status === 200) {
                 toast.success(response.data.message)
             }
