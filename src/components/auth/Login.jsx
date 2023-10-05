@@ -44,8 +44,7 @@ const Login = () => {
 
                 if (response.status === 200) {
                     setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
-                    // toast.success(response.data.message)
-                    // navigate('/')
+
                     window.location.href = '/'
                 }
                 setLoading(false)
@@ -53,15 +52,17 @@ const Login = () => {
                 if (error.response.status === 400 && error.response.data.message === 'Please check your mailbox to verify your account!') {
                     toast.warning(error.response.data.message)
                     navigate('/account-confirmation?email=' + values.email)
+                    setLoading(false)
                 } else if (error.response.status === 400 && error.response.data.message === 'Email or password incorrect') {
                     toast.warning(error.response.data.message)
-
+                    setLoading(false)
                 } else if (error.response.status === 401) {
                     navigate('/new-password?email=' + values.email)
+                    setLoading(false)
                 } else {
                     toast.error(error.response.data.message)
+                    setLoading(false)
                 }
-                setLoading(false)
             }
         },
     });
