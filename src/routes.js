@@ -11,6 +11,8 @@ const Candidats = lazy(() => import('./components/pages/Candidats'))
 const Profile = lazy(() => import('./components/pages/Profile'))
 const Consultant = lazy(() => import('./components/pages/Consultants'))
 const Evaluateur = lazy(() => import('./components/pages/Evaluateurs'))
+const Formulaire = lazy(() => import('./components/pages/Formulaire'))
+const Question = lazy(() => import('./components/pages/Question'))
 
 export const routes = [
     {
@@ -97,6 +99,27 @@ export const routes = [
         name: 'Evaluateur',
         exact: true,
         icon: 'list-search'
-    }
+    },
+    {
+        path: '/form',
+        element: Formulaire,
+        name: 'Formulaires',
+        exact: true,
+        icon: 'files'
+    },
+    {
+        path: '/question',
+        element: Question,
+        name: 'Questions',
+        exact: true,
+        icon: 'question-mark'
+    },
+    {
+        path: '/evaluateur',
+        element: Evaluateur,
+        name: 'Evaluateur',
+        exact: true,
+        icon: 'list-search'
+    },
 
 ]

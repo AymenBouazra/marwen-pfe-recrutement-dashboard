@@ -1,9 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { deleteCookie } from '../utils/functions'
 import axios from 'axios'
 import { toast } from 'react-toastify'
+import { CoockieContext } from '../features/contexts'
 const Header = ({ showSidebarFN }) => {
+    const Context = useContext(CoockieContext)
 
     const navigate = useNavigate()
     const logout = async () => {
@@ -33,7 +35,7 @@ const Header = ({ showSidebarFN }) => {
                 </ul>
                 <div className="navbar-collapse justify-content-end px-0" id="navbarNav">
                     <ul className="navbar-nav flex-row ms-auto align-items-center justify-content-end">
-
+                        <li><span>{Context.role}</span></li>
                         <li className="nav-item dropdown">
                             <div className="nav-link nav-icon-hover" id="drop2" data-bs-toggle="dropdown"
                                 aria-expanded="false">

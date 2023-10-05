@@ -7,9 +7,9 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     const location = useLocation();
     const Context = useContext(CoockieContext)
     const paths = Context.role === 'Candidat' ?
-        ['Evaluateur', 'Dashboard', 'Consultant RH'] :
-        Context.role === 'Evaluateur' ? ['Candidat', 'Consultant RH'] :
-            Context.role === 'Consultant' ? ['Candidat', 'Evaluateur'] : []
+        ['Evaluateur', 'Dashboard', 'Consultant RH', 'Questions', 'Formulaires'] :
+        Context.role === 'Evaluateur' ? ['Consultant RH'] :
+            Context.role === 'Consultant' ? [] : []
 
     const isLinkActive = (path) => {
         return location.pathname === path ? 'active' : '';
@@ -17,8 +17,8 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     return (
         <aside className='left-sidebar'>
             <div className="brand-logo d-flex align-items-center justify-content-between">
-                <Link to="/" onClick={showSidebarFN} className="text-nowrap logo-img">
-                    <img src="img/logo/logo-color-1.svg" width="140" alt="" />
+                <Link to="/" onClick={showSidebarFN} className="text-center logo-img w-100">
+                    <img src="img/logo/logo-color-1.svg" width="120" alt="" />
                 </Link>
                 <div
                     className="close-btn d-xl-none d-block sidebartoggler cursor-pointer"

@@ -24,7 +24,7 @@ const Evaluateurs = () => {
         setFormUpdateOpen(prev => { return !prev })
     }
 
-    const deleteConsultant = async (id) => {
+    const deleteEvaluateur = async (id) => {
         await EvaluateursService.removeOne(id)
         fetchEvaluateurs()
     }
@@ -89,7 +89,7 @@ const Evaluateurs = () => {
 
                                         return errors;
                                     }}
-                                    onSubmit={async (values) => {
+                                    onSubmit={async (values, resetForm) => {
                                         setLoading(true);
                                         try {
                                             const response = await EvaluateursService.createOne(values)
@@ -202,13 +202,16 @@ const Evaluateurs = () => {
                                         }
                                         return errors;
                                     }}
-                                    onSubmit={async (values) => {
+                                    onSubmit={async (values, resetForm) => {
                                         setLoading(true);
                                         try {
                                             const response = await EvaluateursService.updateOne(evaluateur._id, values)
                                             toast.success(response.data.message)
+                                            setLoading(false);
+                                            resetForm()
                                             fetchEvaluateurs()
                                             setFormUpdateOpen(false)
+
                                         } catch (error) {
                                             toast.warning(error.response.data.message)
                                         }
@@ -275,7 +278,7 @@ const Evaluateurs = () => {
                                 <table className="table table-hover table-bordered text-nowrap mb-0 align-middle">
                                     <thead className="text-dark fs-4">
                                         <tr>
-                                            <th className="border-bottom-0">
+                                            <th className="border-bottom-0" style={{ width: '50px' }}>
                                                 <h6 className="fw-semibold mb-0">Id</h6>
                                             </th>
                                             <th className="border-bottom-0">
@@ -287,7 +290,7 @@ const Evaluateurs = () => {
                                             <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Email</h6>
                                             </th>
-                                            {!Context.role === 'Administrateur' && <th className="border-bottom-0">
+                                            {Context.role === 'Administrateur' && <th className="border-bottom-0" style={{ width: '100px' }}>
                                                 <h6 className="fw-semibold mb-0">Actions</h6>
                                             </th>}
                                         </tr>
@@ -312,8 +315,8 @@ const Evaluateurs = () => {
                                                                 <span className="badge bg-primary rounded-3 fw-semibold">{data.email}</span>
                                                             </div>
                                                         </td>
-                                                        {!Context.role === 'Administrateur' && <td className="border-bottom-0">
-                                                            <button onClick={() => deleteConsultant(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
+                                                        {Context.role === 'Administrateur' && <td className="border-bottom-0">
+                                                            <button onClick={() => deleteEvaluateur(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
                                                             <button className='btn btn-success'
                                                                 type='button'
                                                                 onClick={() => fetchEvaluateur(data._id)}
