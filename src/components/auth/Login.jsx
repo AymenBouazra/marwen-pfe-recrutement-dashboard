@@ -38,7 +38,7 @@ const Login = () => {
                 let myHeaders = new Headers();
                 myHeaders.append("Content-Type", "application/json");
                 myHeaders.append('Access-Control-Allow-Origin', 'https://recrute-pfe-recrutement-backend.vercel.app');
-                const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values, {
+                const response = await axios.post(process.env.REACT_APP_BASE_URL + '/api/auth/login', values, {
                     withCredentials: true,
                     headers: myHeaders,
                 })

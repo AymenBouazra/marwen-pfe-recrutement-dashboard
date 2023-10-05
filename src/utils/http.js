@@ -1,22 +1,13 @@
 import axios from "axios";
+import { getCookie } from './functions'
 const BASE_URL = process.env.REACT_APP_BASE_URL
 const axiosApiInstance = axios.create({
-    baseURL: BASE_URL,
+    baseURL: BASE_URL + '/api/',
     headers: {
         "Content-type": "application/json"
     }
 });
 
-function getCookie(name) {
-    const cookies = document.cookie.split(';');
-    for (const cookie of cookies) {
-        const [cookieName, cookieValue] = cookie.split('=');
-        if (cookieName.trim() === name) {
-            return decodeURIComponent(cookieValue);
-        }
-    }
-    return null;
-}
 // Request interceptor for API calls
 axiosApiInstance.interceptors.request.use(
     async config => {
