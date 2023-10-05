@@ -9,7 +9,7 @@ const Header = ({ showSidebarFN }) => {
 
     const navigate = useNavigate()
     const logout = async () => {
-        const response = await axios.get(process.env.REACT_APP_BASE_URL + 'auth/logout')
+        const response = await axios.get(process.env.REACT_APP_BASE_URL + '/api/auth/logout')
         toast.success(response.data.message)
         navigate('/login')
         deleteCookie('token')
