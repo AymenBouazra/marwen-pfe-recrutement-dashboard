@@ -1,14 +1,16 @@
 import { lazy } from "react"
 const Dashboard = lazy(() => import('./components/pages/Dashboard'))
 const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
-const SamplePage = lazy(() => import('./components/pages/SamplePage'))
-const Forms = lazy(() => import('./components/pages/Forms'))
-const Buttons = lazy(() => import('./components/pages/Buttons'))
-const Typography = lazy(() => import('./components/pages/Typography'))
-const Alerts = lazy(() => import('./components/pages/Alerts'))
-const Card = lazy(() => import('./components/pages/Card'))
+// const SamplePage = lazy(() => import('./components/pages/SamplePage'))
+// const Forms = lazy(() => import('./components/pages/Forms'))
+// const Buttons = lazy(() => import('./components/pages/Buttons'))
+// const Typography = lazy(() => import('./components/pages/Typography'))
+// const Alerts = lazy(() => import('./components/pages/Alerts'))
+// const Card = lazy(() => import('./components/pages/Card'))
 const Candidats = lazy(() => import('./components/pages/Candidats'))
 const Profile = lazy(() => import('./components/pages/Profile'))
+const Consultant = lazy(() => import('./components/pages/Consultants'))
+const Evaluateur = lazy(() => import('./components/pages/Evaluateurs'))
 
 export const routes = [
     {
@@ -19,47 +21,54 @@ export const routes = [
         icon: 'layout-dashboard'
     },
     {
+        path: '/profile',
+        element: Profile,
+        name: 'Profile',
+        exact: true,
+        icon: 'file-description'
+    },
+    {
         path: '/candidats',
         element: Candidats,
         name: 'Candidats',
         exact: true,
-        icon: 'file-description'
+        icon: 'users'
     },
-    {
-        path: '/forms',
-        element: Forms,
-        name: 'Forms',
-        exact: true,
-        icon: 'file-description'
-    },
-    {
-        path: '/alerts',
-        element: Alerts,
-        name: 'Alerts',
-        exact: true,
-        icon: 'alert-circle'
-    },
-    {
-        path: '/typography',
-        element: Typography,
-        name: 'Typography',
-        exact: true,
-        icon: 'typography'
-    },
-    {
-        path: '/buttons',
-        element: Buttons,
-        name: 'Buttons',
-        exact: true,
-        icon: 'article'
-    },
-    {
-        path: '/card',
-        element: Card,
-        name: 'Card',
-        exact: true,
-        icon: 'cards'
-    },
+    // {
+    //     path: '/forms',
+    //     element: Forms,
+    //     name: 'Forms',
+    //     exact: true,
+    //     icon: 'file-description'
+    // },
+    // {
+    //     path: '/alerts',
+    //     element: Alerts,
+    //     name: 'Alerts',
+    //     exact: true,
+    //     icon: 'alert-circle'
+    // },
+    // {
+    //     path: '/typography',
+    //     element: Typography,
+    //     name: 'Typography',
+    //     exact: true,
+    //     icon: 'typography'
+    // },
+    // {
+    //     path: '/buttons',
+    //     element: Buttons,
+    //     name: 'Buttons',
+    //     exact: true,
+    //     icon: 'article'
+    // },
+    // {
+    //     path: '/card',
+    //     element: Card,
+    //     name: 'Card',
+    //     exact: true,
+    //     icon: 'cards'
+    // },
     {
         path: '/tabler-icons',
         element: TablerIcons,
@@ -67,19 +76,27 @@ export const routes = [
         exact: true,
         icon: 'mood-happy'
     },
+    // {
+    //     path: '/sample-page',
+    //     element: SamplePage,
+    //     name: 'Sample Page',
+    //     exact: true,
+    //     icon: 'aperture'
+    // },
+
     {
-        path: '/sample-page',
-        element: SamplePage,
-        name: 'Sample Page',
+        path: '/consultant',
+        element: Consultant,
+        name: 'Consultant RH',
         exact: true,
-        icon: 'aperture'
+        icon: 'building-community'
     },
     {
-        path: '/profile',
-        element: Profile,
-        name: 'Profile',
+        path: '/evaluateur',
+        element: Evaluateur,
+        name: 'Evaluateur',
         exact: true,
-        icon: 'user'
+        icon: 'list-search'
     }
 
 ]

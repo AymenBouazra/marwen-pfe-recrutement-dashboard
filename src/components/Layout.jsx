@@ -34,7 +34,7 @@ const Layout = () => {
                 <Header showSidebarFN={showSidebarFN} isSidebarOpen={isMiniSidebar} />
                 <Outlet />
                 <div className="py-6 px-6 text-center">
-                    <p className="mb-0 fs-4">Design and Developed by <Link to="/">Aymen bouazra</Link></p>
+                    <p className="mb-0 fs-4">Design and Developed by <Link to="/">Marwen BOUGOSSA</Link></p>
                 </div>
             </div>
         </div>

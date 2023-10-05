@@ -17,6 +17,7 @@ const ForgetPassword = lazy(() => import('./components/auth/ForgetPassword'));
 const ResetPassword = lazy(() => import('./components/auth/ResetPassword'));
 const AddPasswordToCandidat = lazy(() => import('./components/auth/AddPasswordToCandidat'));
 const Register = lazy(() => import('./components/auth/Register'));
+const Page404 = lazy(() => import('./components/auth/Page404'));
 const Loading =
   <div className="d-flex justify-content-center vh-100 align-items-center">
     <div className="spinner-grow text-info" role="status">
@@ -62,13 +63,17 @@ const router = createBrowserRouter([
     path: '/',
     element: <PrivateRoute><Layout /></PrivateRoute>,
     children: routing
+  },
+  {
+    path: '*',
+    element: <Page404 />,
   }
 
 ]);
 
 
 function App() {
-  const token = decodeToken(getCookie('token'))
+  const token = decodeToken(getCookie('token')) || {}
 
   return (
     <div>

@@ -20,5 +20,5 @@ export const isExpiredToken = (token) => {
 }
 
 export const decodeToken = (token) => {
-    return jwt_decode(token);
+    return token ? jwt_decode(token) : {}
 }

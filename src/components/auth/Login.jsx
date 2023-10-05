@@ -36,23 +36,24 @@ const Login = () => {
             try {
                 setLoading(true)
                 const response = await axios.post(process.env.REACT_APP_BASE_URL + 'auth/login', values)
-                
+
                 if (response.status === 200) {
                     setCookie("token", response.data.token, { maxAge: rememberDevice ? oneDayInSeconds * 14 : oneDayInSeconds });
-                toast.success(response.data.message)
-                navigate('/')
+                    // toast.success(response.data.message)
+                    // navigate('/')
+                    window.location.href = '/'
                 }
                 setLoading(false)
             } catch (error) {
-                if (error.response.status === 400 && error.response.data.message==='Please check your mailbox to verify your account!') {
+                if (error.response.status === 400 && error.response.data.message === 'Please check your mailbox to verify your account!') {
                     toast.warning(error.response.data.message)
                     navigate('/account-confirmation?email=' + values.email)
-                }else if (error.response.status === 400 && error.response.data.message==='Email or password incorrect') {
+                } else if (error.response.status === 400 && error.response.data.message === 'Email or password incorrect') {
                     toast.warning(error.response.data.message)
-                    
+
                 } else if (error.response.status === 401) {
-                    navigate('/new-password?email='+values.email)
-                }  else {
+                    navigate('/new-password?email=' + values.email)
+                } else {
                     toast.error(error.response.data.message)
                 }
                 setLoading(false)
@@ -68,7 +69,7 @@ const Login = () => {
                         <div className="card mb-0">
                             <div className="card-body">
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="img/logo/dark-logo.svg" width="180" alt="" />
+                                    <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
                                 <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>

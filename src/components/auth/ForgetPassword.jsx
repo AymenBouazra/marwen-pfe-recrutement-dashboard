@@ -46,7 +46,7 @@ const ForgetPassword = () => {
                         <div className="card mb-0">
                             <div className="card-body">
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="img/logo/dark-logo.svg" width="180" alt="" />
+                                    <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
                                 <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>
@@ -68,12 +68,12 @@ const ForgetPassword = () => {
                                         : 'Search'}</button>
 
                                     <div className="d-flex align-items-center justify-content-center">
-                                    <p className="fs-4 mb-0 fw-bold">Return to</p>
+                                        <p className="fs-4 mb-0 fw-bold">Return to</p>
                                         <Link className="text-primary fw-bold ms-2" to="/login">Sign In</Link>
-                                        
+
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center">
-                                    <p className="fs-4 mb-0 fw-bold">Or</p>
+                                        <p className="fs-4 mb-0 fw-bold">Or</p>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center">
                                         <Link className="text-primary fw-bold ms-2" to="/register">Create account</Link>

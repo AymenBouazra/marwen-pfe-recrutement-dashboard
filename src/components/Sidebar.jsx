@@ -1,9 +1,15 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { Link, useLocation } from 'react-router-dom'
 import { routes } from '../routes';
+import { CoockieContext } from '../features/contexts'
 
 const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     const location = useLocation();
+    const Context = useContext(CoockieContext)
+    const paths = Context.role === 'Candidat' ?
+        ['Evaluateur', 'Dashboard', 'Consultant RH'] :
+        Context.role === 'Evaluateur' ? ['Candidat', 'Consultant RH'] :
+            Context.role === 'Consultant' ? ['Candidat', 'Evaluateur'] : []
 
     const isLinkActive = (path) => {
         return location.pathname === path ? 'active' : '';
@@ -11,8 +17,8 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     return (
         <aside className='left-sidebar'>
             <div className="brand-logo d-flex align-items-center justify-content-between">
-                <Link to="/" className="text-nowrap logo-img">
-                    <img src="img/logo/dark-logo.svg" width="180" alt="" />
+                <Link to="/" onClick={showSidebarFN} className="text-nowrap logo-img">
+                    <img src="img/logo/logo-color-1.svg" width="140" alt="" />
                 </Link>
                 <div
                     className="close-btn d-xl-none d-block sidebartoggler cursor-pointer"
@@ -31,8 +37,8 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
 
                     {routes.map((nav, index) => {
                         return (
-                            !['Profile'].includes(nav.name) && <li className='sidebar-item' key={index}>
-                                <Link className={`sidebar-link ${isLinkActive(nav.path)}`} to={nav.path} aria-expanded="false">
+                            !paths.includes(nav.name) && <li className='sidebar-item' key={index}>
+                                <Link className={`sidebar-link ${isLinkActive(nav.path)}`} onClick={showSidebarFN} to={nav.path} aria-expanded="false">
                                     <span>
                                         <i className={"ti ti-" + nav.icon}></i>
                                     </span>

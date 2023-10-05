@@ -17,7 +17,7 @@ const createOne = data => {
     return http.post("candidats/addFromJson", data);
 };
 
-const UserService = {
+const CandidatService = {
     getAllCandidats,
     updateOne,
     removeOne,
@@ -25,4 +25,4 @@ const UserService = {
     createOne,
 }
 
-export default UserService
+export default CandidatService

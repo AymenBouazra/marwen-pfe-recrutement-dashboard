@@ -64,7 +64,7 @@ const Register = () => {
                         <div className="card mb-0">
                             <div className="card-body">
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="img/logo/dark-logo.svg" width="180" alt="" />
+                                    <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
                                 <p className="text-center">Your Social Campaigns</p>
                                 <form onSubmit={formik.handleSubmit}>
