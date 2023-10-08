@@ -17,12 +17,17 @@ const createOne = data => {
     return http.post("form", data);
 };
 
+const affectForm = (idUser, idFormulaire) => {
+    return http.get("affectFormToCandidat/" + idUser + '/' + idFormulaire);
+};
+
 const FormService = {
     getAllForms,
     updateOne,
     removeOne,
     getOne,
     createOne,
+    affectForm
 }
 
 export default FormService

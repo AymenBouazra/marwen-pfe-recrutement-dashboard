@@ -1,13 +1,32 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { toast } from 'react-toastify';
 import CandidatsService from '../../services/candidat'
+import FormulairesService from '../../services/formulaire'
 import { CoockieContext } from '../../features/contexts';
 const Candidats = () => {
     const [jsonData, setJsonData] = useState(null);
     const [candidats, setCandidats] = useState([])
+    const [formulaires, setFormulaires] = useState([])
     const [loading, setLoading] = useState(false)
     const [notification, setNotification] = useState('')
+    const [selectedForm, setSelectedForm] = useState({
+        idUser: '',
+        idFormulaire: ''
+    })
+
     const Context = useContext(CoockieContext)
+
+    const handleChangeSelectForm = (id, { currentTarget }) => {
+        setSelectedForm({
+            idUser: id,
+            idFormulaire: currentTarget.value
+        });
+    }
+
+    const handleSubmitSelectedForm = async () => {
+        const response = await FormulairesService.affectForm(selectedForm.idUser, selectedForm.idFormulaire)
+        toast.success(response.data.message)
+    }
 
     const handleFileUpload = (event) => {
         const file = event.target.files[0];
@@ -67,12 +86,18 @@ const Candidats = () => {
         setCandidats(response.data)
 
     }
+    const fetchFormulaires = async () => {
+        const response = await FormulairesService.getAllForms()
+        setFormulaires(response.data)
+
+    }
 
     const deleteCandidat = async (id) => {
         await CandidatsService.removeOne(id)
         fetchCandidats()
     }
     useEffect(() => {
+        fetchFormulaires()
         fetchCandidats()
     }, [])
 
@@ -132,7 +157,10 @@ const Candidats = () => {
                                             <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Email</h6>
                                             </th>
-                                            {Context.role === 'Administrateur' && <th className="border-bottom-0" style={{ width: '100px' }}>
+                                            <th className="border-bottom-0">
+                                                <h6 className="fw-semibold mb-0">Formulaire affecté</h6>
+                                            </th>
+                                            {(Context.role === 'Administrateur' || Context.role === 'Consultant') && <th className="border-bottom-0" style={{ width: '350px' }}>
                                                 <h6 className="fw-semibold mb-0">Actions</h6>
                                             </th>}
                                         </tr>
@@ -157,10 +185,22 @@ const Candidats = () => {
                                                                 <span className="badge bg-light text-dark rounded-3 fw-semibold">{data.email}</span>
                                                             </div>
                                                         </td>
+                                                        <td className="border-bottom-0">
+                                                            <p className="mb-0 fw-normal">{data.formulaire ? data.formulaire.title : 'N\'est pas affecté'}</p>
+                                                        </td>
                                                         {Context.role === 'Administrateur' &&
-                                                            <td className="border-bottom-0">
+                                                            <td className="border-bottom-0 d-flex">
                                                                 <button onClick={() => deleteCandidat(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
-                                                                <button className='btn btn-success'><i className='ti ti-edit'></i></button>
+                                                                {<select className='form-select me-2' title='Affecter un formulaire'
+                                                                    style={{ minWidth: '150px' }}
+                                                                    onChange={(event) => handleChangeSelectForm(data._id, event)}
+                                                                    disabled={data.formulaire}>
+                                                                    <option value="">Affecter un formulaire</option>
+                                                                    {formulaires?.map((formulaire, i) => {
+                                                                        return <option key={i} value={formulaire._id}>{formulaire.title}</option>
+                                                                    })}
+                                                                </select>}
+                                                                {(selectedForm.idFormulaire !== '' && selectedForm.idUser === data._id) && <button className='btn btn-success' onClick={() => handleSubmitSelectedForm(data._id)}><i className='ti ti-check'></i></button>}
                                                             </td>}
                                                     </tr>
                                                 )
