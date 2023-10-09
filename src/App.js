@@ -3,6 +3,8 @@ import './assets/css/styles.min.css'
 import './assets/scss/styles.scss'
 import 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import 'react-toastify/dist/ReactToastify.min.css'
+import 'sweetalert2/dist/sweetalert2.min.js'
+import 'sweetalert2/dist/sweetalert2.min.css'
 import { Suspense, lazy } from 'react';
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import { routes } from './routes'
@@ -74,7 +76,6 @@ const router = createBrowserRouter([
 
 function App() {
   const token = decodeToken(getCookie('token')) || {}
-
   return (
     <div>
       <ToastContainer

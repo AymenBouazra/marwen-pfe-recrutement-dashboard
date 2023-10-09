@@ -3,6 +3,9 @@ import { toast } from 'react-toastify';
 import CandidatsService from '../../services/candidat'
 import FormulairesService from '../../services/formulaire'
 import { CoockieContext } from '../../features/contexts';
+import Swal from 'sweetalert2'
+import { Link } from 'react-router-dom';
+
 const Candidats = () => {
     const [jsonData, setJsonData] = useState(null);
     const [candidats, setCandidats] = useState([])
@@ -25,7 +28,12 @@ const Candidats = () => {
 
     const handleSubmitSelectedForm = async () => {
         const response = await FormulairesService.affectForm(selectedForm.idUser, selectedForm.idFormulaire)
+        setSelectedForm({
+            idUser: '',
+            idFormulaire: ''
+        });
         toast.success(response.data.message)
+        fetchCandidats()
     }
 
     const handleFileUpload = (event) => {
@@ -93,9 +101,24 @@ const Candidats = () => {
     }
 
     const deleteCandidat = async (id) => {
-        await CandidatsService.removeOne(id)
-        fetchCandidats()
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then(async (result) => {
+            if (result.isConfirmed) {
+                await CandidatsService.removeOne(id)
+                fetchCandidats()
+            }
+        })
+
     }
+
+
     useEffect(() => {
         fetchFormulaires()
         fetchCandidats()
@@ -191,16 +214,24 @@ const Candidats = () => {
                                                         {Context.role === 'Administrateur' &&
                                                             <td className="border-bottom-0 d-flex">
                                                                 <button onClick={() => deleteCandidat(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>
-                                                                {<select className='form-select me-2' title='Affecter un formulaire'
-                                                                    style={{ minWidth: '150px' }}
-                                                                    onChange={(event) => handleChangeSelectForm(data._id, event)}
-                                                                    disabled={data.formulaire}>
-                                                                    <option value="">Affecter un formulaire</option>
-                                                                    {formulaires?.map((formulaire, i) => {
-                                                                        return <option key={i} value={formulaire._id}>{formulaire.title}</option>
-                                                                    })}
-                                                                </select>}
-                                                                {(selectedForm.idFormulaire !== '' && selectedForm.idUser === data._id) && <button className='btn btn-success' onClick={() => handleSubmitSelectedForm(data._id)}><i className='ti ti-check'></i></button>}
+                                                                {!data.reponse ? <>
+                                                                    {<select className={`form-select me-2 ${data.formulaire && 'cursor-not-allowed'}`} title='Affecter un formulaire'
+                                                                        style={{ minWidth: '150px' }}
+                                                                        onChange={(event) => handleChangeSelectForm(data._id, event)}
+                                                                        disabled={data.formulaire}>
+                                                                        <option value="">Affecter un formulaire</option>
+                                                                        {formulaires?.map((formulaire, i) => {
+                                                                            return <option key={i} value={formulaire._id}>{formulaire.title}</option>
+                                                                        })}
+                                                                    </select>}
+                                                                    {(selectedForm.idFormulaire !== '' && selectedForm.idUser === data._id) &&
+                                                                        <button className='btn btn-success' onClick={() => handleSubmitSelectedForm(data._id)}>
+                                                                            <i className='ti ti-check'></i>
+                                                                        </button>
+                                                                    }
+                                                                </>
+                                                                    : <Link to={'/evaluate/' + data._id + '/' + data.reponse._id} className='btn btn-secondary'>Evaluate</Link>}
+
                                                             </td>}
                                                     </tr>
                                                 )

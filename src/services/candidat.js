@@ -13,6 +13,10 @@ const getOne = id => {
     return http.get(`candidats/${id}`);
 };
 
+const getFormFromCandidat = id => {
+    return http.get(`candidats/getFormFromCandidat/${id}`);
+};
+
 const createOne = data => {
     return http.post("candidats/addFromJson", data);
 };
@@ -23,6 +27,7 @@ const CandidatService = {
     removeOne,
     getOne,
     createOne,
+    getFormFromCandidat
 }
 
 export default CandidatService

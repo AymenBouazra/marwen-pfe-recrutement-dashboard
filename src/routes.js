@@ -13,6 +13,9 @@ const Consultant = lazy(() => import('./components/pages/Consultants'))
 const Evaluateur = lazy(() => import('./components/pages/Evaluateurs'))
 const Formulaire = lazy(() => import('./components/pages/Formulaire'))
 const Question = lazy(() => import('./components/pages/Question'))
+const TestTechnique = lazy(() => import('./components/pages/TestTechnique'))
+const Evaluate = lazy(() => import('./components/pages/Evaluate'))
+const Evaluations = lazy(() => import('./components/pages/Evaluations'))
 
 export const routes = [
     {
@@ -113,6 +116,27 @@ export const routes = [
         name: 'Questions',
         exact: true,
         icon: 'question-mark'
+    },
+    {
+        path: '/test-technique',
+        element: TestTechnique,
+        name: 'TestTechnique',
+        exact: true,
+        icon: ''
+    },
+    {
+        path: '/evaluate/:idCandidat/:idReponse',
+        element: Evaluate,
+        name: 'Evaluate',
+        exact: true,
+        icon: ''
+    },
+    {
+        path: '/evaluations',
+        element: Evaluations,
+        name: 'Evaluations',
+        exact: true,
+        icon: 'notes'
     },
 
 ]

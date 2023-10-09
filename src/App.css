@@ -117,3 +117,7 @@ html {
 .candidats.alert-success {
   padding: 7px 16px !important;
 }
+
+.cursor-not-allowed {
+  cursor: not-allowed !important;
+}

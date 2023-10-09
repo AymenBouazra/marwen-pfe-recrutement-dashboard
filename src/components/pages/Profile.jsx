@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import UserService from '../../services/user'
 import { CoockieContext } from '../../features/contexts'
+import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 const Profile = () => {
@@ -29,6 +30,32 @@ const Profile = () => {
                     <h2 className="fw-semibold">Profile details</h2>
                 </div>
                 <div className="card-body">
+                    {
+                        !profile.note ?
+                            <>
+                                {
+                                    (profile.formulaire && profile.testPassed === false) ?
+                                        <div className='mb-3'>
+                                            <div className="badge bg-secondary position-relative h1"><h5 className='text-white mb-0'>Nouvelles</h5>
+                                                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
+                                                    <span className="visually-hidden">New alerts</span>
+                                                </span>
+                                            </div>
+                                            <p>Vous avez été séléctionné pour passer un text technique
+                                                cliquez ici<Link to="/test-technique" className='btn btn-link'> Test</Link>
+                                            </p>
+                                        </div>
+                                        : (profile.formulaire && profile.testPassed === true) && <>
+                                            <span className='h4'><strong>Notification</strong></span>
+                                            <h5 className='mb-4 mt-2 text-success bg-light p-3 rounded'>
+                                                Votre test a été envoyé et vous serez notifié des feedbacks des evaluateurs par mail
+                                            </h5>
+                                            <hr className='w-75 mx-auto' />
+                                        </>}
+                            </>
+                            : <>
+                                Votre note est  {profile.note}%
+                            </>}
                     {notification && <div className="alert alert-success animate slideIn" role="alert">
                         {notification}
                     </div>}
@@ -126,7 +153,7 @@ const Profile = () => {
                                     <label htmlFor="email" className="form-label">
                                         E-mail
                                     </label>
-                                    <input type="email" value={values.email || ''} onChange={handleChange} onBlur={handleBlur} className="form-control" id="email" disabled />
+                                    <input type="email" value={values.email || ''} onChange={handleChange} onBlur={handleBlur} className="form-control cursor-not-allowed" id="email" disabled />
                                 </div>
                                 <div className="mb-3 col-12">
                                     <label htmlFor="password" className="form-label">
