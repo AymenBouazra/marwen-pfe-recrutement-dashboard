@@ -110,7 +110,7 @@ const Evaluations = () => {
                                     <tbody>
                                         {evaluations.length === 0 ?
                                             <tr>
-                                                <td colSpan={5}><h4 className='text-center text-muted'>No evaluations yet received</h4></td>
+                                                <td colSpan={6}><h4 className='text-center text-muted'>No evaluations yet received</h4></td>
                                             </tr> :
                                             evaluations?.map((data, index) => {
                                                 return (
@@ -130,7 +130,7 @@ const Evaluations = () => {
                                                                 <span className="fw-semibold">{data.formulaireId.title}</span>
                                                             </div>
                                                         </td>
-                                                        {(Context.role === 'Administrateur' || Context.role === 'Evaluateur') && <td className="border-bottom-0">
+                                                        {(Context.role === 'Administrateur' || (Context.role === 'Evaluateur' && data.statut)) && <td className="border-bottom-0">
                                                             {data.statut === true ? <span className='fw-semibold text-success uppercase'>Accepté</span> : data.statut === false ? <span className='fw-semibold text-danger uppercase'>Refusé</span> :
                                                                 <><button onClick={() => accepterCandidat(data._id)} className='btn btn-success me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <> Accepter <i className='ti ti-check'></i></>}</button>
                                                                     <button onClick={() => refuserCandidat(data._id)} className='btn btn-danger me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <>Refuser <i className='ti ti-x'></i></>}</button></>}

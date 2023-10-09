@@ -1,6 +1,6 @@
 import { lazy } from "react"
 const Dashboard = lazy(() => import('./components/pages/Dashboard'))
-const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
+// const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
 // const SamplePage = lazy(() => import('./components/pages/SamplePage'))
 // const Forms = lazy(() => import('./components/pages/Forms'))
 // const Buttons = lazy(() => import('./components/pages/Buttons'))
@@ -74,13 +74,13 @@ export const routes = [
     //     exact: true,
     //     icon: 'cards'
     // },
-    {
-        path: '/tabler-icons',
-        element: TablerIcons,
-        name: 'Tabler Icons',
-        exact: true,
-        icon: 'mood-happy'
-    },
+    // {
+    //     path: '/tabler-icons',
+    //     element: TablerIcons,
+    //     name: 'Tabler Icons',
+    //     exact: true,
+    //     icon: 'mood-happy'
+    // },
     // {
     //     path: '/sample-page',
     //     element: SamplePage,

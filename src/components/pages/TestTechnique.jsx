@@ -1,11 +1,13 @@
 import React, { useContext, useEffect, useState } from 'react'
 import CandidatService from '../../services/candidat'
+import UserService from '../../services/user'
 import { CoockieContext } from '../../features/contexts'
 import ReponseService from '../../services/response'
 import { toast } from 'react-toastify'
 
 const TestTechnique = () => {
     const [candidatForm, setcandidatForm] = useState()
+    const [candidat, setcandidat] = useState()
     const [loading, setLoading] = useState(false)
     const [formData, setFormData] = useState({
         reponses: [],
@@ -79,6 +81,11 @@ const TestTechnique = () => {
             const form = await CandidatService.getFormFromCandidat(Context.id)
             setcandidatForm(form.data)
         }
+        const fetchCandidat = async () => {
+            const user = await UserService.getOne(Context.id)
+            setcandidat(user.data)
+        }
+        fetchCandidat()
         fetchForm()
     }, [Context.id])
     return (
@@ -88,7 +95,7 @@ const TestTechnique = () => {
                     <h2 className="fw-semibold">Formulaire test technique</h2>
                 </div>
                 <div className="card-body">
-                    {candidatForm && candidatForm.questions.map((el, index) => {
+                    {(candidatForm && candidat?.testPassed===false) ?  candidatForm.questions.map((el, index) => {
                         return <div key={index} className='d-flex flex-column mb-3'>
                             <label className='h4' htmlFor={index}>{el.questionTitle}</label>
                             {el.questionType === 'Text' ?
@@ -102,8 +109,17 @@ const TestTechnique = () => {
                                 />
                             }
                         </div>
-                    })}
-                    <div className='d-flex justify-content-end mb-4'>
+                    })
+                    : 
+                    <>
+                    <h1>Test passé</h1>
+                    <p>
+                        Vous avez déjà passé le test technique, vous allez être notifié par mail aprés l'évaluation de votre test
+                        </p>
+                        </>
+                        }
+                    {
+                       (candidat?.testPassed===false) && <div className='d-flex justify-content-end mb-4'>
                         <button
                             className='btn btn-primary ms-auto'
                             type='button'
@@ -119,7 +135,7 @@ const TestTechnique = () => {
                                 </>
                             }
                         </button>
-                    </div>
+                    </div>}
                 </div>
             </div>
         </div >

@@ -19,6 +19,7 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             const response = await UserService.getOne(Context.id)
+            console.log(response.data);
             setProfile(response.data)
         }
         fetchProfile()
@@ -31,10 +32,10 @@ const Profile = () => {
                 </div>
                 <div className="card-body">
                     {
-                        !profile.note ?
+                        profile?.evaluation?.statut ?
                             <>
                                 {
-                                    (profile.formulaire && profile.testPassed === false) ?
+                                    (profile.formulaire && profile.testPassed === false ) ?
                                         <div className='mb-3'>
                                             <div className="badge bg-secondary position-relative h1"><h5 className='text-white mb-0'>Nouvelles</h5>
                                                 <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
@@ -54,11 +55,16 @@ const Profile = () => {
                                         </>}
                             </>
                             : <>
-                                Votre note est  {profile.note}%
+                                {profile.evaluation.statut === true && profile.testPassed === true? 
+                                <p>
+
+                                </p>:
+                                profile.evaluation.statut === false && profile.testPassed === true  && <p></p>}
                             </>}
                     {notification && <div className="alert alert-success animate slideIn" role="alert">
                         {notification}
                     </div>}
+                    <div>{JSON.stringify(profile)}</div>
                     <Formik
                         initialValues={profile ? profile : {
                             nom: '',
