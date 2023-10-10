@@ -11,12 +11,12 @@ const ResetPassword = () => {
     const validate = values => {
         const errors = {};
         if (!values.password) {
-            errors.password = 'Password is required';
+            errors.password = 'Password est obligatoire';
         } else if (values.password.length < 6) {
             errors.password = 'Must be 6 characters or more';
         }
         if (!values.confirmPassword) {
-            errors.confirmPassword = 'Password confirmation is required';
+            errors.confirmPassword = 'Password confirmation est obligatoire';
         } else if (values.confirmPassword.length < 6) {
             errors.confirmPassword = 'Must be 6 characters or more';
         } else if (values.password !== values.confirmPassword) {
@@ -60,7 +60,7 @@ const ResetPassword = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
                                         <label htmlFor="password" className="form-label">New password</label>

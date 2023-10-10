@@ -74,13 +74,13 @@ const Question = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.questionTitle) {
-                                            errors.questionTitle = 'Question questionTitle is required';
+                                            errors.questionTitle = 'Question est obligatoire';
                                         }
                                         if (!values.questionType) {
-                                            errors.questionType = 'Type is required';
+                                            errors.questionType = 'Type est obligatoire';
                                         }
                                         if (!values.formulaireId) {
-                                            errors.formulaireId = 'Prénom is required';
+                                            errors.formulaireId = 'Formulaire est obligatoire';
                                         }
 
                                         return errors;
@@ -138,9 +138,9 @@ const Question = () => {
                                                 </label>
                                                 <select name="formulaireId" id="formulaireId2" value={values.formulaireId || ''} onBlur={handleBlur} onChange={handleChange} className="form-control">
                                                     <option value="">Choisissez un formulaire</option>
-                                                    {forms.map((f) => {
+                                                    {forms.map((f, index) => {
                                                         return (
-                                                            <option value={f._id}>{f.title}</option>
+                                                            <option key={index} value={f._id}>{f.title}</option>
                                                         )
                                                     })}
                                                 </select>
@@ -153,7 +153,7 @@ const Question = () => {
                                                     type='submit'
                                                     disabled={loading}
                                                 >
-                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Save</span></>}
+                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Sauvegarder</span></>}
                                                 </button>
                                             </div>
                                         </form>)}
@@ -189,13 +189,13 @@ const Question = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.questionTitle) {
-                                            errors.questionTitle = 'Nom is required';
+                                            errors.questionTitle = 'Nom est obligatoire';
                                         }
                                         if (!values.questionType) {
-                                            errors.questionType = 'Prénom is required';
+                                            errors.questionType = 'Prénom est obligatoire';
                                         }
                                         if (!values.formulaireId) {
-                                            errors.formulaireId = 'Prénom is required';
+                                            errors.formulaireId = 'Prénom est obligatoire';
                                         }
                                         return errors;
                                     }}
@@ -250,9 +250,9 @@ const Question = () => {
                                                 </label>
                                                 <select name="formulaireId" id="formulaireId2" value={values.formulaireId || ''} onBlur={handleBlur} onChange={handleChange} className="form-control">
                                                     <option value="">Choisissez un formulaire</option>
-                                                    {forms.map((f) => {
+                                                    {forms.map((f, index) => {
                                                         return (
-                                                            <option value={f._id}>{f.title}</option>
+                                                            <option key={index} value={f._id}>{f.title}</option>
                                                         )
                                                     })}
                                                 </select>
@@ -272,7 +272,7 @@ const Question = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card w-100">
+                    <div className="w-100">
                         <div className="card-body p-4">
                             <h5 className="card-title fw-semibold mb-4">Liste des questions</h5>
                             <div className="table-responsive">

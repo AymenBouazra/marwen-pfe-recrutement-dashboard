@@ -1,6 +1,6 @@
 import { lazy } from "react"
 const Dashboard = lazy(() => import('./components/pages/Dashboard'))
-// const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
+const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
 // const SamplePage = lazy(() => import('./components/pages/SamplePage'))
 // const Forms = lazy(() => import('./components/pages/Forms'))
 // const Buttons = lazy(() => import('./components/pages/Buttons'))
@@ -16,6 +16,8 @@ const Question = lazy(() => import('./components/pages/Question'))
 const TestTechnique = lazy(() => import('./components/pages/TestTechnique'))
 const Evaluate = lazy(() => import('./components/pages/Evaluate'))
 const Evaluations = lazy(() => import('./components/pages/Evaluations'))
+const Notification = lazy(() => import('./components/pages/Notification'))
+
 
 export const routes = [
     {
@@ -74,13 +76,13 @@ export const routes = [
     //     exact: true,
     //     icon: 'cards'
     // },
-    // {
-    //     path: '/tabler-icons',
-    //     element: TablerIcons,
-    //     name: 'Tabler Icons',
-    //     exact: true,
-    //     icon: 'mood-happy'
-    // },
+    {
+        path: '/tabler-icons',
+        element: TablerIcons,
+        name: 'Tabler Icons',
+        exact: true,
+        icon: 'mood-happy'
+    },
     // {
     //     path: '/sample-page',
     //     element: SamplePage,
@@ -92,14 +94,14 @@ export const routes = [
     {
         path: '/consultant',
         element: Consultant,
-        name: 'Consultant RH',
+        name: 'Consultants RH',
         exact: true,
         icon: 'building-community'
     },
     {
         path: '/evaluateur',
         element: Evaluateur,
-        name: 'Evaluateur',
+        name: 'Evaluateurs',
         exact: true,
         icon: 'list-search'
     },
@@ -120,7 +122,7 @@ export const routes = [
     {
         path: '/test-technique',
         element: TestTechnique,
-        name: 'TestTechnique',
+        name: 'Test technique',
         exact: true,
         icon: ''
     },
@@ -137,6 +139,13 @@ export const routes = [
         name: 'Evaluations',
         exact: true,
         icon: 'notes'
+    },
+    {
+        path: '/notifications',
+        element: Notification,
+        name: 'Notification',
+        exact: true,
+        icon: 'bell'
     },
 
 ]

@@ -11,24 +11,24 @@ const Register = () => {
     const validate = values => {
         const errors = {};
         if (!values.prenom) {
-            errors.prenom = 'First name is required';
+            errors.prenom = 'First name est obligatoire';
         } else if (values.prenom.length > 15) {
             errors.prenom = 'Must be 15 characters or less';
         }
 
         if (!values.nom) {
-            errors.nom = 'Last name is required';
+            errors.nom = 'Last name est obligatoire';
         } else if (values.nom.length > 20) {
             errors.nom = 'Must be 20 characters or less';
         }
 
         if (!values.email) {
-            errors.email = 'Email is required';
+            errors.email = 'Email est obligatoire';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
         }
         if (!values.password) {
-            errors.password = 'Password is required';
+            errors.password = 'Password est obligatoire';
         } else if (values.password.length < 6) {
             errors.password = 'Must be 6 characters or more';
         }
@@ -66,7 +66,7 @@ const Register = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-3">
                                         <label htmlFor="prenom" className="form-label">First name</label>

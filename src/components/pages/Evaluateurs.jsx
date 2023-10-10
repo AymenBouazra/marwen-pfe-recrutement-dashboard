@@ -71,18 +71,18 @@ const Evaluateurs = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.nom) {
-                                            errors.nom = 'Nom is required';
+                                            errors.nom = 'Nom est obligatoire';
                                         }
                                         if (!values.prenom) {
-                                            errors.prenom = 'Prénom is required';
+                                            errors.prenom = 'Prénom est obligatoire';
                                         }
                                         if (!values.email) {
-                                            errors.email = 'Email is required';
+                                            errors.email = 'Email est obligatoire';
                                         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                                             errors.email = 'Invalid email address';
                                         }
                                         if (!values.password) {
-                                            errors.password = 'Password is required';
+                                            errors.password = 'Password est obligatoire';
                                         } else if (values.password.length < 6) {
                                             errors.password = 'Must be 6 characters or more';
                                         }
@@ -151,7 +151,7 @@ const Evaluateurs = () => {
                                                     type='submit'
                                                     disabled={loading}
                                                 >
-                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Save</span></>}
+                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Sauvegarder</span></>}
                                                 </button>
                                             </div>
                                         </form>)}
@@ -190,13 +190,13 @@ const Evaluateurs = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.nom) {
-                                            errors.nom = 'Nom is required';
+                                            errors.nom = 'Nom est obligatoire';
                                         }
                                         if (!values.prenom) {
-                                            errors.prenom = 'Prénom is required';
+                                            errors.prenom = 'Prénom est obligatoire';
                                         }
                                         if (!values.email) {
-                                            errors.email = 'Email is required';
+                                            errors.email = 'Email est obligatoire';
                                         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                                             errors.email = 'Invalid email address';
                                         }
@@ -271,7 +271,7 @@ const Evaluateurs = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card w-100">
+                    <div className="w-100">
                         <div className="card-body p-4">
                             <h5 className="card-title fw-semibold mb-4">Liste des evaluateurs</h5>
                             <div className="table-responsive">

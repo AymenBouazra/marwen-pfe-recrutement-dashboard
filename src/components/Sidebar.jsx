@@ -7,9 +7,9 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
     const location = useLocation();
     const Context = useContext(CoockieContext)
     const paths = Context.role === 'Candidat' ?
-        ['Evaluateur', 'Dashboard', 'Consultant RH', 'Questions', 'Formulaires', 'TestTechnique', 'Evaluate'] :
-        Context.role === 'Evaluateur' ? ['Consultant RH', 'TestTechnique', 'Evaluate'] :
-            Context.role === 'Consultant' ? ['TestTechnique', 'Evaluate'] : ['TestTechnique', 'Evaluate']
+        ['Evaluateurs', 'Dashboard', 'Consultants RH', 'Questions', 'Formulaires', 'Test technique', 'Evaluate', 'Candidats', 'Evaluations'] :
+        Context.role === 'Evaluateur' ? ['Consultants RH', 'Test technique', 'Evaluate', 'Notification'] :
+            Context.role === 'Consultants' ? ['Test technique', 'Evaluate', 'Notification'] : ['Test technique', 'Evaluate', 'Notification']
 
     const isLinkActive = (path) => {
         return location.pathname === path ? 'active' : '';

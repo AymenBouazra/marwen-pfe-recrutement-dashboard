@@ -49,7 +49,7 @@ const Consultants = () => {
                             aria-expanded="false"
                             aria-controls="collapseCreate"
                         >
-                            <i className='ti ti-plus'></i>  Create consultant
+                            <i className='ti ti-plus'></i>  Créé un consultant RH
                         </button>}
                     </div>}
                     <div className={`collapse ${formUpdateOpen ? 'd-none' : ''}`} id="collapseCreate">
@@ -70,20 +70,20 @@ const Consultants = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.nom) {
-                                            errors.nom = 'Nom is required';
+                                            errors.nom = 'Nom est obligatoire';
                                         }
                                         if (!values.prenom) {
-                                            errors.prenom = 'Prénom is required';
+                                            errors.prenom = 'Prénom est obligatoire';
                                         }
                                         if (!values.email) {
-                                            errors.email = 'Email is required';
+                                            errors.email = 'Email est obligatoire';
                                         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-                                            errors.email = 'Invalid email address';
+                                            errors.email = 'Adresse email invalide  ';
                                         }
                                         if (!values.password) {
-                                            errors.password = 'Password is required';
+                                            errors.password = 'Mot de passe est obligatoire';
                                         } else if (values.password.length < 6) {
-                                            errors.password = 'Must be 6 characters or more';
+                                            errors.password = 'Doit être 6 characteres ou plus';
                                         }
 
                                         return errors;
@@ -150,7 +150,7 @@ const Consultants = () => {
                                                     type='submit'
                                                     disabled={loading}
                                                 >
-                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Save</span></>}
+                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Sauvegarder</span></>}
                                                 </button>
                                             </div>
                                         </form>)}
@@ -189,13 +189,13 @@ const Consultants = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.nom) {
-                                            errors.nom = 'Nom is required';
+                                            errors.nom = 'Nom est obligatoire';
                                         }
                                         if (!values.prenom) {
-                                            errors.prenom = 'Prénom is required';
+                                            errors.prenom = 'Prénom est obligatoire';
                                         }
                                         if (!values.email) {
-                                            errors.email = 'Email is required';
+                                            errors.email = 'Email est obligatoire';
                                         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
                                             errors.email = 'Invalid email address';
                                         }
@@ -270,7 +270,7 @@ const Consultants = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card w-100">
+                    <div className="w-100">
                         <div className="card-body p-4">
                             <h5 className="card-title fw-semibold mb-4">Liste des consultants</h5>
                             <div className="table-responsive">

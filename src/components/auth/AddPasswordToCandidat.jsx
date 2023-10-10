@@ -13,12 +13,12 @@ const AddPasswordToCandidat = () => {
     const validate = values => {
         const errors = {};
         if (!values.password) {
-            errors.password = 'Password is required';
+            errors.password = 'Password est obligatoire';
         } else if (values.password.length < 6) {
             errors.password = 'Must be 6 characters or more';
         }
         if (!values.confirmPassword) {
-            errors.confirmPassword = 'Password confirmation is required';
+            errors.confirmPassword = 'Password confirmation est obligatoire';
         } else if (values.confirmPassword.length < 6) {
             errors.confirmPassword = 'Must be 6 characters or more';
         } else if (values.password !== values.confirmPassword) {
@@ -62,10 +62,10 @@ const AddPasswordToCandidat = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
-                                        <label htmlFor="password" className="form-label">New password</label>
+                                        <label htmlFor="password" className="form-label">Nouveau mot de passe</label>
                                         <input type="password" className={"form-control " + (!formik.touched.password ? '' : formik.touched.password && formik.errors.password ? 'is-invalid' : 'is-valid')} id="password"
                                             name="password"
                                             onChange={formik.handleChange}
@@ -75,7 +75,7 @@ const AddPasswordToCandidat = () => {
                                             <div className='pt-2 text-danger'>{formik.errors.password}</div>)}
                                     </div>
                                     <div className="mb-4">
-                                        <label htmlFor="confirmPassword" className="form-label">Confirm password</label>
+                                        <label htmlFor="confirmPassword" className="form-label">Confirmer mot de passe</label>
                                         <input type="password" className={"form-control " + (!formik.touched.confirmPassword ? '' : formik.touched.confirmPassword && formik.errors.confirmPassword ? 'is-invalid' : 'is-valid')} id="confirmPassword"
                                             name="confirmPassword"
                                             onChange={formik.handleChange}
@@ -87,12 +87,12 @@ const AddPasswordToCandidat = () => {
                                     <button type='submit' disabled={loading} className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{loading ?
                                         <div>
                                             <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                            <span> Verifying...</span>
+                                            <span> Changement en cours...</span>
                                         </div>
-                                        : 'Search'}</button>
+                                        : 'Changer'}</button>
 
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">Return to</p>
+                                        <p className="fs-4 mb-0 fw-bold">Retourner à</p>
                                         <Link className="text-primary fw-bold ms-2" to="/login">Sign In</Link>
                                     </div>
                                 </form>

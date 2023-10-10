@@ -13,7 +13,7 @@ const AccountConfirmation = () => {
     const validate = values => {
         const errors = {};
         if (!values.code) {
-            errors.code = 'Code is required';
+            errors.code = 'Code est obligatoire';
         } else if (values.code.length !== 6) {
             errors.code = 'Code must be 6 caracters';
         }
@@ -77,7 +77,7 @@ const AccountConfirmation = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
                                         <label htmlFor="code" className="form-label text-center w-100">Confirmation code</label>

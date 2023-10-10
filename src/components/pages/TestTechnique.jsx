@@ -70,6 +70,7 @@ const TestTechnique = () => {
                 },
             });
             toast.success(response.data.message);
+
             setLoading(false)
         } catch (error) {
             toast.success(error.response.data.message);
@@ -95,7 +96,7 @@ const TestTechnique = () => {
                     <h2 className="fw-semibold">Formulaire test technique</h2>
                 </div>
                 <div className="card-body">
-                    {(candidatForm && candidat?.testPassed===false) ?  candidatForm.questions.map((el, index) => {
+                    {(candidatForm && candidat?.testPassed === false) ? candidatForm.questions.map((el, index) => {
                         return <div key={index} className='d-flex flex-column mb-3'>
                             <label className='h4' htmlFor={index}>{el.questionTitle}</label>
                             {el.questionType === 'Text' ?
@@ -110,32 +111,32 @@ const TestTechnique = () => {
                             }
                         </div>
                     })
-                    : 
-                    <>
-                    <h1>Test passé</h1>
-                    <p>
-                        Vous avez déjà passé le test technique, vous allez être notifié par mail aprés l'évaluation de votre test
-                        </p>
+                        :
+                        <>
+                            <h1>Test passé</h1>
+                            <p>
+                                Vous avez déjà passé le test technique, vous allez être notifié par mail aprés l'évaluation de votre test
+                            </p>
                         </>
-                        }
+                    }
                     {
-                       (candidat?.testPassed===false) && <div className='d-flex justify-content-end mb-4'>
-                        <button
-                            className='btn btn-primary ms-auto'
-                            type='button'
-                            onClick={handleSubmit}
-                            disabled={loading}
-                        >
-                            {loading ? <>
-                                <span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Chargement...
-                            </> :
-                                <>
-                                    <i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>
-                                    &nbsp;<span style={{ fontSize: '16px' }}>Envoyer</span>
-                                </>
-                            }
-                        </button>
-                    </div>}
+                        (candidat?.testPassed === false) && <div className='d-flex justify-content-end mb-4'>
+                            <button
+                                className='btn btn-primary ms-auto'
+                                type='button'
+                                onClick={handleSubmit}
+                                disabled={loading}
+                            >
+                                {loading ? <>
+                                    <span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Chargement...
+                                </> :
+                                    <>
+                                        <i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>
+                                        &nbsp;<span style={{ fontSize: '16px' }}>Envoyer</span>
+                                    </>
+                                }
+                            </button>
+                        </div>}
                 </div>
             </div>
         </div >

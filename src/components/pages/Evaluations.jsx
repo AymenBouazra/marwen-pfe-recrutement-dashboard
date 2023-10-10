@@ -80,8 +80,8 @@ const Evaluations = () => {
                     <h2 className="fw-semibold">Evaluations</h2>
                 </div>
                 <div className="card-body">
-                    <div className="card w-100">
-                        <div className="card-body p-4">
+                    <div className="w-100">
+                        <div className="p-4">
                             <h5 className="card-title fw-semibold mb-4">Liste des evaluations</h5>
                             <div className="table-responsive">
                                 <table className="table table-hover table-bordered text-nowrap mb-0 align-middle">
@@ -98,6 +98,9 @@ const Evaluations = () => {
                                             </th>
                                             <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Evalué par</h6>
+                                            </th>
+                                            <th className="border-bottom-0">
+                                                <h6 className="fw-semibold mb-0">Commentaire</h6>
                                             </th>
                                             <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Formulaire</h6>
@@ -124,6 +127,9 @@ const Evaluations = () => {
                                                         </td>
                                                         <td className="border-bottom-0">
                                                             <p className="mb-0 fw-normal">{data.evaluateurId.nom + ' ' + data.evaluateurId.prenom}</p>
+                                                        </td>
+                                                        <td className="border-bottom-0">
+                                                            <p className="mb-0 fw-normal">{data.commentaire}</p>
                                                         </td>
                                                         <td className="border-bottom-0">
                                                             <div className="d-flex align-items-center gap-2">

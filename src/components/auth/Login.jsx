@@ -15,12 +15,12 @@ const Login = () => {
     const validate = values => {
         const errors = {};
         if (!values.email) {
-            errors.email = 'Email is required';
+            errors.email = 'Email est obligatoire';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
         }
         if (!values.password) {
-            errors.password = 'Password is required';
+            errors.password = 'Password est obligatoire';
         } else if (values.password.length < 6) {
             errors.password = 'Must be 6 characters or more';
         }
@@ -69,10 +69,10 @@ const Login = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-3">
-                                        <label htmlFor="email" className="form-label">Email Address</label>
+                                        <label htmlFor="email" className="form-label">Adresse e-mail </label>
                                         <input type="email" className={"form-control " + (!formik.touched.email ? '' : formik.touched.email && formik.errors.email ? 'is-invalid' : 'is-valid')} id="email"
                                             name="email"
                                             onChange={formik.handleChange}
@@ -83,7 +83,7 @@ const Login = () => {
                                         )}
                                     </div>
                                     <div className="mb-4">
-                                        <label htmlFor="password" className="form-label">Password</label>
+                                        <label htmlFor="password" className="form-label">Mot de passe</label>
                                         <input type="password" className={"form-control " + (!formik.touched.password ? '' : formik.touched.password && formik.errors.password ? 'is-invalid' : 'is-valid')} id="password"
                                             name="password"
                                             onChange={formik.handleChange}
@@ -96,21 +96,21 @@ const Login = () => {
                                         <div className="form-check">
                                             <input className="form-check-input primary" type="checkbox" value="" id="flexCheckChecked" checked={rememberDevice} onChange={() => setRememberDevice(!rememberDevice)} />
                                             <label className="form-check-label text-dark" htmlFor="flexCheckChecked">
-                                                Remeber me
+                                                Me souvenir
                                             </label>
                                         </div>
-                                        <Link className="text-primary fw-bold" to="/forget-password">Forgot Password ?</Link>
+                                        <Link className="text-primary fw-bold" to="/forget-password">Mot de passe oublié?</Link>
                                     </div>
                                     <button type='submit' disabled={loading} className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">
                                         {loading ?
                                             <div>
                                                 <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                                <span> Connecting...</span>
+                                                <span> Connection...</span>
                                             </div>
                                             : 'Sign In'}
                                     </button>
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">New to Modernize?</p>
+                                        <p className="fs-4 mb-0 fw-bold">Nouveau à Recrute?</p>
                                         <Link className="text-primary fw-bold ms-2" to="/register">Create an account</Link>
                                     </div>
                                 </form>

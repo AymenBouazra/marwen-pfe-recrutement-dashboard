@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import UserService from '../../services/user'
 import { CoockieContext } from '../../features/contexts'
-import { Link } from 'react-router-dom'
 import { Formik } from 'formik'
 import { toast } from 'react-toastify'
 const Profile = () => {
@@ -19,7 +18,6 @@ const Profile = () => {
     useEffect(() => {
         const fetchProfile = async () => {
             const response = await UserService.getOne(Context.id)
-            console.log(response.data);
             setProfile(response.data)
         }
         fetchProfile()
@@ -28,43 +26,13 @@ const Profile = () => {
         <div className="container-fluid">
             <div className="card">
                 <div className='card-header'>
-                    <h2 className="fw-semibold">Profile details</h2>
+                    <h2 className="fw-semibold">Profile</h2>
                 </div>
                 <div className="card-body">
-                    {
-                        profile?.evaluation?.statut ?
-                            <>
-                                {
-                                    (profile.formulaire && profile.testPassed === false ) ?
-                                        <div className='mb-3'>
-                                            <div className="badge bg-secondary position-relative h1"><h5 className='text-white mb-0'>Nouvelles</h5>
-                                                <span className="position-absolute top-0 start-100 translate-middle p-2 bg-danger border border-light rounded-circle">
-                                                    <span className="visually-hidden">New alerts</span>
-                                                </span>
-                                            </div>
-                                            <p>Vous avez été séléctionné pour passer un text technique
-                                                cliquez ici<Link to="/test-technique" className='btn btn-link'> Test</Link>
-                                            </p>
-                                        </div>
-                                        : (profile.formulaire && profile.testPassed === true) && <>
-                                            <span className='h4'><strong>Notification</strong></span>
-                                            <h5 className='mb-4 mt-2 text-success bg-light p-3 rounded'>
-                                                Votre test a été envoyé et vous serez notifié des feedbacks des evaluateurs par mail
-                                            </h5>
-                                            <hr className='w-75 mx-auto' />
-                                        </>}
-                            </>
-                            : <>
-                                {profile.evaluation.statut === true && profile.testPassed === true? 
-                                <p>
 
-                                </p>:
-                                profile.evaluation.statut === false && profile.testPassed === true  && <p></p>}
-                            </>}
                     {notification && <div className="alert alert-success animate slideIn" role="alert">
                         {notification}
                     </div>}
-                    <div>{JSON.stringify(profile)}</div>
                     <Formik
                         initialValues={profile ? profile : {
                             nom: '',
@@ -81,29 +49,29 @@ const Profile = () => {
                         validate={(values) => {
                             const errors = {};
                             if (!values.nom) {
-                                errors.nom = 'Nom is required';
+                                errors.nom = 'Nom est obligatoire';
                             }
                             if (!values.prenom) {
-                                errors.prenom = 'Prénom is required';
+                                errors.prenom = 'Prénom est obligatoire';
                             }
                             if (Context.role === 'Candidat') {
                                 if (!values.adresse) {
-                                    errors.adresse = 'Adresse is required';
+                                    errors.adresse = 'Adresse est obligatoire';
                                 }
                                 if (!values.phone) {
-                                    errors.phone = 'Téléphone is required';
+                                    errors.phone = 'Téléphone est obligatoire';
                                 }
                                 if (!values.diplome) {
-                                    errors.diplome = 'Diplôme is required';
+                                    errors.diplome = 'Diplôme est obligatoire';
                                 }
                                 if (!values.education) {
-                                    errors.education = 'Étude is required';
+                                    errors.education = 'Étude est obligatoire';
                                 }
                                 if (!values.experience) {
-                                    errors.experience = 'Expérience is required';
+                                    errors.experience = 'Expérience est obligatoire';
                                 }
                                 if (!values.competence) {
-                                    errors.competence = 'Compétence is required';
+                                    errors.competence = 'Compétence est obligatoire';
                                 }
                             }
                             return errors;
@@ -226,7 +194,7 @@ const Profile = () => {
                                         type='submit'
                                         disabled={loading}
                                     >
-                                        {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Save</span></>}
+                                        {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Sauvegarder</span></>}
                                     </button>
                                 </div>
                             </form>)}

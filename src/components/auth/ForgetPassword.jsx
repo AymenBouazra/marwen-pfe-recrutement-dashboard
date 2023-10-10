@@ -9,7 +9,7 @@ const ForgetPassword = () => {
     const validate = values => {
         const errors = {};
         if (!values.email) {
-            errors.email = 'Email is required';
+            errors.email = 'Email est obligatoire';
         } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
             errors.email = 'Invalid email address';
         }
@@ -48,10 +48,10 @@ const ForgetPassword = () => {
                                 <div className="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="img/logo/logo-color-1.svg" width="180" alt="" />
                                 </div>
-                                <p className="text-center">Your Social Campaigns</p>
+
                                 <form onSubmit={formik.handleSubmit}>
                                     <div className="mb-4">
-                                        <h1 htmlFor="email" className="form-label text-center w-100 mb-3">Enter your e-mail adress here </h1>
+                                        <h1 htmlFor="email" className="form-label text-center w-100 mb-3">Entrer votre e-mail</h1>
                                         <input type="email" className={"form-control"} id="email"
                                             name="email"
                                             onChange={formik.handleChange}
@@ -63,20 +63,20 @@ const ForgetPassword = () => {
                                     <button type='submit' disabled={loading} className="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2">{loading ?
                                         <div>
                                             <span className="spinner-border spinner-border-sm" aria-hidden="true"></span>
-                                            <span> Verifying...</span>
+                                            <span> Verification en cours...</span>
                                         </div>
                                         : 'Search'}</button>
 
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">Return to</p>
-                                        <Link className="text-primary fw-bold ms-2" to="/login">Sign In</Link>
+                                        <p className="fs-4 mb-0 fw-bold">Retour à</p>
+                                        <Link className="text-primary fw-bold ms-2" to="/login">Se connecter</Link>
 
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <p className="fs-4 mb-0 fw-bold">Or</p>
+                                        <p className="fs-4 mb-0 fw-bold">Ou</p>
                                     </div>
                                     <div className="d-flex align-items-center justify-content-center">
-                                        <Link className="text-primary fw-bold ms-2" to="/register">Create account</Link>
+                                        <Link className="text-primary fw-bold ms-2" to="/register">Créé un compte</Link>
                                     </div>
                                 </form>
                             </div>

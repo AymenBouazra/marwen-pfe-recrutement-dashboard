@@ -38,7 +38,7 @@ const Evaluate = () => {
             console.log(Object.values(note));
             sumNotes += Number(Object.values(note)[0])
         }
-        const calcul = (sumNotes / (noteLength * 2)) * 100
+        const calcul = (sumNotes / (noteLength * 5)) * 100
         Swal.fire({
             title: 'Vous êtes sûr?',
             text: "Vous ne pourrez pas revenir en arrière !",
@@ -100,7 +100,7 @@ const Evaluate = () => {
                                         {question}
                                     </h5>
                                     <div className='d-flex justify-content-between align-items-center'>
-                                        <input type='number' className='form-control bg-white me-2' width='100px' id={'noteQuestion n°' + index} onChange={handleCollectNotes} min={0} max={2} /> */2</div>
+                                        <input type='number' className='form-control bg-white me-2' width='100px' id={'noteQuestion n°' + index} onChange={handleCollectNotes} min={0} max={5} /> */5</div>
                                 </div>
                                 <div className='card-body'>
                                     {answer}
@@ -116,7 +116,7 @@ const Evaluate = () => {
                                         {video.question}
                                     </h5>
                                     <div className='d-flex justify-content-between align-items-center'>
-                                        <input type='number' className='form-control bg-white me-2' width='100px' id={'noteVideo n°' + index} onChange={handleCollectNotes} min={0} max={2} /> */2</div>
+                                        <input type='number' className='form-control bg-white me-2' width='100px' id={'noteVideo n°' + index} onChange={handleCollectNotes} min={0} max={5} /> */5</div>
                                 </div>
                                 <div className='card-body'>
                                     <ReactPlayer url={video.path} controls width="100%" height='auto' />

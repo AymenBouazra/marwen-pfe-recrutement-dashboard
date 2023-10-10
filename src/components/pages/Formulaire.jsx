@@ -38,7 +38,7 @@ const Forms = () => {
         <div className="container-fluid">
             <div className="card">
                 <div className='card-header'>
-                    <h2 className="fw-semibold">Forms</h2>
+                    <h2 className="fw-semibold">Formulaires</h2>
                 </div>
                 <div className="card-body">
                     {Context.role === 'Administrateur' && <div className='d-flex justify-content-end mb-4'>
@@ -50,7 +50,7 @@ const Forms = () => {
                             aria-expanded="false"
                             aria-controls="collapseCreate"
                         >
-                            <i className='ti ti-plus'></i>  Create form
+                            <i className='ti ti-plus'></i>  Créé un formulaire
                         </button>}
                     </div>}
                     <div className={`collapse ${formUpdateOpen ? 'd-none' : ''}`} id="collapseCreate">
@@ -67,10 +67,10 @@ const Forms = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.title) {
-                                            errors.title = 'Question title is required';
+                                            errors.title = 'Titre est obligatoire';
                                         }
                                         if (!values.description) {
-                                            errors.description = 'Type is required';
+                                            errors.description = 'Type est obligatoire';
                                         }
 
                                         return errors;
@@ -125,7 +125,7 @@ const Forms = () => {
                                                     type='submit'
                                                     disabled={loading}
                                                 >
-                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Save</span></>}
+                                                    {loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <><i className="ti ti-device-floppy" style={{ fontSize: '16px' }}></i>&nbsp;<span style={{ fontSize: '16px' }}>Sauvegarder</span></>}
                                                 </button>
                                             </div>
                                         </form>)}
@@ -160,10 +160,10 @@ const Forms = () => {
                                     validate={(values) => {
                                         const errors = {};
                                         if (!values.title) {
-                                            errors.title = 'Nom is required';
+                                            errors.title = 'Nom est obligatoire';
                                         }
                                         if (!values.description) {
-                                            errors.description = 'Prénom is required';
+                                            errors.description = 'Prénom est obligatoire';
                                         }
                                         return errors;
                                     }}
@@ -222,7 +222,7 @@ const Forms = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="card w-100">
+                    <div className="w-100">
                         <div className="card-body p-4">
                             <h5 className="card-title fw-semibold mb-4">Liste des forms</h5>
                             <div className="table-responsive">
