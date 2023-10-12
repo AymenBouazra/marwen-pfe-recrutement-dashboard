@@ -1,6 +1,6 @@
 import { lazy } from "react"
 const Dashboard = lazy(() => import('./components/pages/Dashboard'))
-const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
+// const TablerIcons = lazy(() => import('./components/pages/TablerIcons'))
 // const SamplePage = lazy(() => import('./components/pages/SamplePage'))
 // const Forms = lazy(() => import('./components/pages/Forms'))
 // const Buttons = lazy(() => import('./components/pages/Buttons'))
