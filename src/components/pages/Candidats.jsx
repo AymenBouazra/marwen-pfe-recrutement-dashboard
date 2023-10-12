@@ -183,7 +183,7 @@ const Candidats = () => {
                                             <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Formulaire affecté</h6>
                                             </th>
-                                            {(Context.role === 'Administrateur' || Context.role === 'Evaluateur' || Context.role === 'Consultant RH') && <th className="border-bottom-0" style={{ width: '350px' }}>
+                                            {(Context.role === 'Administrateur' || Context.role === 'Evaluateur' || Context.role === 'Consultant RH') && <th className="border-bottom-0">
                                                 <h6 className="fw-semibold mb-0">Actions</h6>
                                             </th>}
                                         </tr>
@@ -212,9 +212,14 @@ const Candidats = () => {
                                                             <p className="mb-0 fw-normal">{data.formulaire ? data.formulaire.title : 'N\'est pas affecté'}</p>
                                                         </td>
                                                         {(Context.role === 'Administrateur' || Context.role === 'Evaluateur' || Context.role === 'Consultant RH') &&
-                                                            <td className="border-bottom-0 d-flex">
-                                                                {(Context.role === 'Administrateur' || Context.role === 'Consultant RH') && <button onClick={() => deleteCandidat(data._id)} className='btn btn-danger me-2'><i className='ti ti-trash'></i></button>}
-                                                                {!data.reponse ?
+                                                            <td className="border-bottom-0 d-flex align-items-center">
+                                                                {(Context.role === 'Administrateur' || Context.role === 'Consultant RH') && (
+                                                                    <button onClick={() => deleteCandidat(data._id)} className='btn btn-danger me-2'>
+                                                                        <i className='ti ti-trash'></i>
+                                                                    </button>
+                                                                )}
+
+                                                                {!data.reponse ? (
                                                                     <>
                                                                         {<select className={`form-select me-2 ${data.formulaire && 'cursor-not-allowed'}`} title='Affecter un formulaire'
                                                                             style={{ minWidth: '150px' }}
@@ -231,16 +236,18 @@ const Candidats = () => {
                                                                             </button>
                                                                         }
                                                                     </>
-                                                                    : (data.reponse && (Context.role === 'Administrateur' || Context.role === 'Evaluateur')) &&
-                                                                        !data.statut ?
-                                                                        <Link to={'/evaluate/' + data._id + '/' + data.reponse._id} className='btn btn-secondary'>Evaluate</Link> :
-                                                                        <span className={`fw-semibold ${data.statut === true ? 'text-success' : 'text-danger'} uppercase`}>{data.statut === true ?
-                                                                            'Accepté' : 'Refusé'}</span>
-                                                                }
-
-                                                            </td>}
-                                                        {/* <><button onClick={() => accepterCandidat(data._id)} className='btn btn-success me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <> Accepter <i className='ti ti-check'></i></>}</button>
-                                                                    <button onClick={() => refuserCandidat(data._id)} className='btn btn-danger me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <>Refuser <i className='ti ti-x'></i></>}</button></> */}
+                                                                ) : (data.reponse && (Context.role === 'Administrateur' || Context.role === 'Evaluateur')) &&
+                                                                (data.statut === undefined ? (
+                                                                    <Link to={'/evaluate/' + data._id + '/' + data.reponse._id} className='btn btn-secondary'>
+                                                                        Evaluate
+                                                                    </Link>
+                                                                ) : (
+                                                                    <span className={`fw-semibold ${data.statut === 'Accepted' ? 'text-success' : 'text-danger'} uppercase`}>
+                                                                        {data.statut === 'Accepted' ? 'Accepté' : 'Refusé'}
+                                                                    </span>
+                                                                ))}
+                                                            </td>
+                                                        }
                                                     </tr>
                                                 )
                                             })}

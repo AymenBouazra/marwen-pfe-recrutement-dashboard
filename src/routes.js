@@ -76,13 +76,13 @@ export const routes = [
     //     exact: true,
     //     icon: 'cards'
     // },
-    {
-        path: '/tabler-icons',
-        element: TablerIcons,
-        name: 'Tabler Icons',
-        exact: true,
-        icon: 'mood-happy'
-    },
+    // {
+    //     path: '/tabler-icons',
+    //     element: TablerIcons,
+    //     name: 'Tabler Icons',
+    //     exact: true,
+    //     icon: 'mood-happy'
+    // },
     // {
     //     path: '/sample-page',
     //     element: SamplePage,
