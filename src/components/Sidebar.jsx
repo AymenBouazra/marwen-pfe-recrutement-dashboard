@@ -47,7 +47,7 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                             </li>
                         )
                     })}
-                    <li className="nav-small-cap">
+                    {/* <li className="nav-small-cap">
                         <i className="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span className="hide-menu">AUTH</span>
                     </li>
@@ -66,7 +66,7 @@ const Sidebar = ({ showSidebarFN, isSidebarOpen }) => {
                             </span>
                             <span className="hide-menu">Register</span>
                         </Link>
-                    </li>
+                    </li> */}
                 </ul>
 
             </nav>

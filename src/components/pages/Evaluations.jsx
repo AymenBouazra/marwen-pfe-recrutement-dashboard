@@ -120,23 +120,23 @@ const Evaluations = () => {
                                                     <tr key={index}>
                                                         <td className="border-bottom-0"><h6 className="fw-semibold mb-0">{index + 1}</h6></td>
                                                         <td className="border-bottom-0">
-                                                            <h6 className="fw-normal mb-1">{data.candidatId.nom + ' ' + data.candidatId.prenom}</h6>
+                                                            <h6 className="fw-normal mb-1">{data?.candidatId?.nom + ' ' + data?.candidatId?.prenom}</h6>
                                                         </td>
                                                         <td className="border-bottom-0">
-                                                            <p className="mb-0 fw-semibold">{data.note}%</p>
+                                                            <p className="mb-0 fw-semibold">{data?.note}%</p>
                                                         </td>
                                                         <td className="border-bottom-0">
-                                                            <p className="mb-0 fw-normal">{data.evaluateurId.nom + ' ' + data.evaluateurId.prenom}</p>
+                                                            <p className="mb-0 fw-normal">{data?.evaluateurId?.nom + ' ' + data?.evaluateurId?.prenom}</p>
                                                         </td>
                                                         <td className="border-bottom-0">
-                                                            <p className="mb-0 fw-normal">{data.commentaire}</p>
+                                                            <p className="mb-0 fw-normal">{data?.commentaire}</p>
                                                         </td>
                                                         <td className="border-bottom-0">
                                                             <div className="d-flex align-items-center gap-2">
-                                                                <span className="fw-semibold">{data.formulaireId.title}</span>
+                                                                <span className="fw-semibold">{data?.formulaireId?.title}</span>
                                                             </div>
                                                         </td>
-                                                        {(Context.role === 'Administrateur' || (Context.role === 'Evaluateur' && data.statut)) && <td className="border-bottom-0">
+                                                        {(Context.role === 'Administrateur' || (Context.role === 'Evaluateur' && data?.statut)) && <td className="border-bottom-0">
                                                             {data.statut === true ? <span className='fw-semibold text-success uppercase'>Accepté</span> : data.statut === false ? <span className='fw-semibold text-danger uppercase'>Refusé</span> :
                                                                 <><button onClick={() => accepterCandidat(data._id)} className='btn btn-success me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <> Accepter <i className='ti ti-check'></i></>}</button>
                                                                     <button onClick={() => refuserCandidat(data._id)} className='btn btn-danger me-2'>{loading ? <><span className="spinner-border spinner-border-sm" aria-hidden="true"></span> Saving...</> : <>Refuser <i className='ti ti-x'></i></>}</button></>}

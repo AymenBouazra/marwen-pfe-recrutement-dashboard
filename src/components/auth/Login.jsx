@@ -77,7 +77,8 @@ const Login = () => {
                                             name="email"
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
-                                            value={formik.values.email} />
+                                            value={formik.values.email}
+                                            defaultValue='admin@gmail.com' />
                                         {formik.touched.email && formik.errors.email && (
                                             <div className='pt-2 text-danger'>{formik.errors.email}</div>
                                         )}
@@ -88,7 +89,8 @@ const Login = () => {
                                             name="password"
                                             onChange={formik.handleChange}
                                             onBlur={formik.handleBlur}
-                                            value={formik.values.password} />
+                                            value={formik.values.password}
+                                            defaultValue='123456' />
                                         {formik.touched.password && formik.errors.password && (
                                             <div className='pt-2 text-danger'>{formik.errors.password}</div>)}
                                     </div>
